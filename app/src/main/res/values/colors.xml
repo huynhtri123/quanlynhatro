@@ -5,4 +5,6 @@
     <color name="primaryColor">#50C2C9</color>
     <color name="SecondaryColor">#55BBAF</color>
     <color name="background">#EEEEEE</color>
+    <color name="box_room_bg">#E6F0F1</color>
+    <color name="xanh_coban">#BFCFD0</color>
 </resources>
