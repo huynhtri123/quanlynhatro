@@ -28,6 +28,7 @@ public class ListRoomActivity extends AppCompatActivity {
 
         listRoomAdapter = new ListRoomAdapter();
         listRoom = new ArrayList<>();
+        //Du lieu cung
         Room room1 = new Room("ROOM001", "https://s.net.vn/T2FO", "100m2", "Occupied", "3000$");
         Room room2 = new Room("ROOM002", "https://s.net.vn/T2FO", "140m2", "Occupied", "600$");
         Room room3 = new Room("ROOM003", "https://s.net.vn/T2FO", "280m2", "Occupied", "700$");

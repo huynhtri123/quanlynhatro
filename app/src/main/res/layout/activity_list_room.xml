@@ -10,17 +10,27 @@
     android:layout_centerHorizontal="true"
     android:background="@color/background">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/vector"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/LR_icon_back"
+        />
+
     <Button
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/LR_btn_1"
         android:background="@drawable/list_room_button"
         android:text="ALL ROOMS"
         android:fontFamily="@font/poppinsbold"
         android:textSize="18dp"
         android:textColor="@color/white"
+        android:layout_below="@+id/LR_icon_back"
         />
 
     <androidx.recyclerview.widget.RecyclerView

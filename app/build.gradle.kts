@@ -37,6 +37,8 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
     implementation("com.squareup.picasso:picasso:2.5.2")
 
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
