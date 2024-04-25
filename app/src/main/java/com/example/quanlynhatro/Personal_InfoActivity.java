@@ -2,6 +2,7 @@ package com.example.quanlynhatro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,7 @@ public class Personal_InfoActivity extends AppCompatActivity {
         anhxa();
         setSpinnerGender();
         setBtnSaveOnclick();
+        setIconBack();
 
         //Du lieu cung
         Account account = new Account("ternant001", "123456");
@@ -87,5 +89,14 @@ public class Personal_InfoActivity extends AppCompatActivity {
         if (tenant.getGender().equals("men")){
             PI_spinner_gender.setSelection(0);
         } else PI_spinner_gender.setSelection(1);
+    }
+    private void setIconBack(){
+        PI_icon_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Personal_InfoActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
