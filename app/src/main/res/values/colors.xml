@@ -7,4 +7,8 @@
     <color name="background">#EEEEEE</color>
     <color name="box_room_bg">#E6F0F1</color>
     <color name="xanh_coban">#BFCFD0</color>
+    <color name="background_home">#F3FFFF</color>
+    <color name="vien_home">#E2DDDD</color>
+    <color name="xanh_btn_home">#ADD4DD</color>
+    <color name="box_func_home">#DEF4F5</color>
 </resources>
