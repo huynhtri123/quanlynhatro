@@ -58,6 +58,8 @@ public class HomeActivity extends AppCompatActivity {
         getInfoUser();
         func1_personal_info();
         func2_listRooms();
+        func3_TenantManagement();
+        func6_ContractManagement();
     }
 
     private void func1_personal_info(){
@@ -95,5 +97,23 @@ public class HomeActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(tenant.getThumUrl())
                 .into(H_image_1);
+    }
+    private void func3_TenantManagement(){
+        H_img_func3_tenant_management.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ListTenantActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void func6_ContractManagement(){
+        H_img_func6_contract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
