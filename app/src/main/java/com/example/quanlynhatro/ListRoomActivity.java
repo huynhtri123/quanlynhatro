@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.quanlynhatro.Entity.Room;
 
@@ -15,8 +19,10 @@ public class ListRoomActivity extends AppCompatActivity {
     private RecyclerView rcv_list_room;
     private ListRoomAdapter listRoomAdapter;
     private List<Room> listRoom;
+    private ImageView LR_icon_back;
     private void anhxa(){
         rcv_list_room = findViewById(R.id.rcv_list_room);
+        LR_icon_back = findViewById(R.id.LR_icon_back);
     }
 
     @Override
@@ -25,6 +31,7 @@ public class ListRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_room);
         getSupportActionBar().hide();
         anhxa();
+        setIconBack();
 
         listRoomAdapter = new ListRoomAdapter();
         listRoom = new ArrayList<>();
@@ -43,6 +50,15 @@ public class ListRoomActivity extends AppCompatActivity {
         rcv_list_room.setLayoutManager(linearLayoutManager);
         rcv_list_room.setAdapter(listRoomAdapter);
 
+    }
 
+    private void setIconBack(){
+        LR_icon_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListRoomActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
