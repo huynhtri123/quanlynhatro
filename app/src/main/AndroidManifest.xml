@@ -17,6 +17,7 @@
         android:theme="@style/Theme.Quanlynhatro"
         tools:targetApi="31">
         <activity
+            android:name=".ListTenantActivity"
             android:name=".ListContractActivity"
             android:exported="true">
             <intent-filter>
