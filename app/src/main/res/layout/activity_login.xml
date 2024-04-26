@@ -56,18 +56,19 @@
         android:id="@+id/ly_1">
 
         <EditText
+            android:id="@+id/L_edt_username"
             android:layout_width="match_parent"
             android:layout_height="57dp"
-            android:hint="Enter Your Email"
+            android:hint="Username"
             android:layout_marginTop="10dp"
             android:paddingLeft="20dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
-            android:id="@+id/edt_email"
             android:fontFamily="@font/poppinsregular"
             />
 
         <EditText
+            android:id="@+id/L_edt_password"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:hint="Confirm Password"
@@ -75,7 +76,6 @@
             android:paddingLeft="20dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
-            android:id="@+id/edt_conf_password"
             android:fontFamily="@font/poppinsregular"
             />
 
