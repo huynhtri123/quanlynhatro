@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/box_room"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/LI_rl_1"
+        android:layout_width="110dp"
+        android:layout_height="121dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LI_tv_roomCode_1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="RoomCode:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LI_tv_tenantName_1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LI_tv_roomCode_1"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Tenant:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LI_tv_totalInvoice_1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LI_tv_tenantName_1"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Total:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LI_tv_Status_1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LI_tv_totalInvoice_1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="21dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Status:"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/LI_rl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="121dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LI_tv_roomCode_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinsregular"
+            android:text="code"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LI_tv_tenantName_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LI_tv_roomCode_2"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="name"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LI_tv_totalInvoice_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LI_tv_tenantName_2"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinsregular"
+            android:text="total"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LI_tv_status_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LI_tv_totalInvoice_2"
+            android:fontFamily="@font/poppinsregular"
+            android:text="status"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/LI_btn_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_book"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="view"
+        android:textColor="@color/white" />
+
+</LinearLayout>
