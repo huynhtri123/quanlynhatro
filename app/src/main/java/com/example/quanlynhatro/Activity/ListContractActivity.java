@@ -15,8 +15,10 @@ import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Adapter.ListContractAdapter;
 import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.database.AppDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ListContractActivity extends AppCompatActivity {
@@ -39,14 +41,7 @@ public class ListContractActivity extends AppCompatActivity {
 
         listContractAdapter = new ListContractAdapter();
         listContract= new ArrayList<>();
-        //Du lieu cung
-        Account account = new Account("A", "123");
-        Room room1 = new Room("123","","130m2","Empty","1000");
-        Tenant tenant1= new Tenant(account.getId(),"Van A","","0123456789","HCM","18","Nam", "no-room", null);
-        Contract contract1 = new Contract(tenant1, room1, "12-2-2024", "NotApproved");
-
-        listContract.add(contract1);
-
+        listContract = AppDatabase.getInstance(ListContractActivity.this).contractDAO().getAllContracts();
 
         listContractAdapter.setData(listContract);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

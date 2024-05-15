@@ -7,14 +7,16 @@ import androidx.room.RoomDatabase;
 
 import com.example.quanlynhatro.DAO.AccountDAO;
 import com.example.quanlynhatro.DAO.AdminDAO;
+import com.example.quanlynhatro.DAO.ContractDAO;
 import com.example.quanlynhatro.DAO.RoomDAO;
 import com.example.quanlynhatro.DAO.TenantDAO;
 import com.example.quanlynhatro.Entity.Account;
 import com.example.quanlynhatro.Entity.Admin;
+import com.example.quanlynhatro.Entity.Contract;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 
-@Database(entities = {Room.class, Tenant.class, Account.class, Admin.class}, version = 1, exportSchema = false)
+@Database(entities = {Room.class, Tenant.class, Account.class, Admin.class, Contract.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "app_database.db";
     private static AppDatabase instance;
@@ -32,4 +34,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract TenantDAO tenantDAO();
     public abstract AccountDAO accountDAO();
     public abstract AdminDAO adminDAO();
+    public abstract ContractDAO contractDAO();
 }

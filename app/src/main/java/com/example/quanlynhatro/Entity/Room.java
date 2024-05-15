@@ -7,6 +7,11 @@ import androidx.room.PrimaryKey;
 public class Room {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private String roomCode;
+    private String roomUrlImage;
+    private String roomSize;
+    private String roomStatus;
+    private String roomPrice;
     public int getId() {
         return id;
     }
@@ -14,12 +19,6 @@ public class Room {
     public void setId(int id) {
         this.id = id;
     }
-
-    private String roomCode;
-    private String roomUrlImage;
-    private String roomSize;
-    private String roomStatus;
-    private String roomPrice;
 
     public Room(String roomCode, String roomUrlImage, String roomSize, String roomStatus, String roomPrice) {
         this.roomCode = roomCode;

@@ -80,24 +80,25 @@ public class LoginActivity extends AppCompatActivity {
             if (tenant != null) {
                 Log.d(">>check tenantcr7: " , tenant.getName());
                 // Đăng nhập thành công
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-
                 // Lưu thông tin đăng nhập vào session
                 SessionManager.getInstance().setCurrentTenant(tenant);
                 SessionManager.getInstance().setAccount(account);
 
-            } else if (admin != null) {
-                Log.d(">>check admincr7: " , admin.getName());
-                // Đăng nhập thành công
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
 
+            } else if (admin != null) {
+                Log.d(">>check admincr7: " , admin.getName());
+                // Đăng nhập thành công
                 // Lưu thông tin đăng nhập vào session
                 SessionManager.getInstance().setAdmin(admin);
                 SessionManager.getInstance().setAccount(account);
+
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
             } else {
                 // Không tìm thấy
                 Toast.makeText(this, "Tenant not found for the provided account", Toast.LENGTH_SHORT).show();

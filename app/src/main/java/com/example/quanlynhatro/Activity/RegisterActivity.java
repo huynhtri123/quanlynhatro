@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.quanlynhatro.Entity.Account;
 import com.example.quanlynhatro.Entity.Tenant;
+import com.example.quanlynhatro.Enum.TenantRoomStatus;
 import com.example.quanlynhatro.R;
 import com.example.quanlynhatro.database.AppDatabase;
 
@@ -79,7 +80,6 @@ public class RegisterActivity extends AppCompatActivity {
         String address = edt_conf_address.getText().toString().trim();
         String age = edt_conf_age.getText().toString().trim();
         String gender = R_spinner_gender.getSelectedItem().toString();
-        String roomStatus = "no-room";
 
         //Kiểm tra email hợp lệ
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Lấy acc vừa tạo, tạo Tenant
         Account acc = AppDatabase.getInstance(RegisterActivity.this).accountDAO().getAccountByUsernameAndPassword(email, password);
-        Tenant tenant = new Tenant(acc.getId(), name, thumUrl, phone, address, age, gender, roomStatus, null);
+        Tenant tenant = new Tenant(acc.getId(), name, thumUrl, phone, address, age, gender, TenantRoomStatus.NO_ROOM.name(), null);
         Log.d(">>>check register tenant222: ",  tenant.toString());
         AppDatabase.getInstance(RegisterActivity.this).tenantDAO().insertTenant(tenant);
         Toast.makeText(RegisterActivity.this, "Added New Tenant!", Toast.LENGTH_SHORT).show();
