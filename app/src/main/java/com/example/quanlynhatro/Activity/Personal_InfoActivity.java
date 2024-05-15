@@ -1,9 +1,13 @@
-package com.example.quanlynhatro;
+package com.example.quanlynhatro.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,11 +19,20 @@ import android.widget.Spinner;
 import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.Entity.Account;
 import com.example.quanlynhatro.Entity.Tenant;
+import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.SessionManager;
+import com.example.quanlynhatro.database.AppDatabase;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Personal_InfoActivity extends AppCompatActivity {
-    private EditText PI_edt_username;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private EditText PI_edt_email;
     private EditText PI_edt_password;
     private CircleImageView PI_image_1;
     private EditText PI_edt_name;
@@ -31,7 +44,7 @@ public class Personal_InfoActivity extends AppCompatActivity {
     private ImageView PI_icon_back;
     private Tenant tenant;
     private void anhxa(){
-        PI_edt_username = findViewById(R.id.PI_edt_username);
+        PI_edt_email = findViewById(R.id.PI_edt_email);
         PI_edt_password = findViewById(R.id.PI_edt_password);
         PI_image_1 = findViewById(R.id.PI_image_1);
         PI_edt_name = findViewById(R.id.PI_edt_name);
@@ -54,10 +67,14 @@ public class Personal_InfoActivity extends AppCompatActivity {
         setBtnSaveOnclick();
         setIconBack();
 
-        //Du lieu cung
-        Account account = new Account("ternant001", "123456");
-        tenant = new Tenant(account, "Pep Guardiola", "https://s.net.vn/hMT4", "0384576368", "Long An", "18", "men");
-        setText(tenant);
+        tenant = SessionManager.getInstance().getCurrentTenant();
+        //tam thoi, gan cung image cho dep
+        tenant.setThumUrl("https://s.net.vn/hMT4");
+
+        Account account = SessionManager.getInstance().getAccount();
+
+        setText(tenant, account);
+
     }
 
     private void setSpinnerGender(){
@@ -75,9 +92,10 @@ public class Personal_InfoActivity extends AppCompatActivity {
             }
         });
     }
-    private void setText(Tenant tenant){
-        PI_edt_username.setText(tenant.getAccount().getUsername());
-        PI_edt_password.setText(tenant.getAccount().getPassword());
+    private void setText(Tenant tenant, Account account){
+        PI_edt_email.setText(account.getUsername());
+        PI_edt_password.setText(account.getPassword());
+
         PI_edt_name.setText(tenant.getName());
         Log.d(">>>check image:", tenant.getThumUrl());
         Glide.with(this)
@@ -99,4 +117,5 @@ public class Personal_InfoActivity extends AppCompatActivity {
             }
         });
     }
+
 }

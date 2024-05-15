@@ -1,16 +1,17 @@
-package com.example.quanlynhatro;
+package com.example.quanlynhatro.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.quanlynhatro.Entity.Room;
+import com.example.quanlynhatro.Adapter.ListRoomAdapter;
+import com.example.quanlynhatro.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,17 +1,22 @@
-package com.example.quanlynhatro;
+package com.example.quanlynhatro.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.Entity.Account;
+import com.example.quanlynhatro.Entity.Admin;
 import com.example.quanlynhatro.Entity.Tenant;
+import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.SessionManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,7 +51,6 @@ public class HomeActivity extends AppCompatActivity {
         H_img_func9_reminders = findViewById(R.id.H_img_func9_reminders);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +58,9 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         anhxa();
 
-        logout();
         getInfoUser();
+        logout();
+
         func1_personal_info();
         func2_listRooms();
         func3_TenantManagement();
@@ -66,11 +71,20 @@ public class HomeActivity extends AppCompatActivity {
         H_img_func1_personal_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Personal_InfoActivity.class);
-                startActivity(intent);
+                Admin admin = SessionManager.getInstance().getAdmin();
+                // Kiểm tra xem session có chứa admin không (có đang đang nhập = amdin k)
+                if (admin == null) {
+                    // Nếu không có thông tin admin, có thể truy cập vào Personal_InfoActivity
+                    Intent intent = new Intent(HomeActivity.this, Personal_InfoActivity.class);
+                    startActivity(intent);
+                } else {
+                    // Nếu có thông tin admin trong session, hiển thị thông báo và không thực hiện thêm hành động nào
+                    Toast.makeText(HomeActivity.this, "This function is not for admin", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
     private void func2_listRooms(){
         H_img_func2_listRooms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +98,9 @@ public class HomeActivity extends AppCompatActivity {
         H_btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Xóa thông tin tenant khỏi session
+                SessionManager.getInstance().clearSession();
+
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -91,12 +108,24 @@ public class HomeActivity extends AppCompatActivity {
     }
     private void getInfoUser(){
         //Du lieu cung
-        Account account = new Account("ternant001", "123456");
-        tenant = new Tenant(account, "Pep Guardiola", "https://s.net.vn/hMT4", "0384576368", "Long An", "18", "men");
-        H_tv_username.setText(tenant.getAccount().getUsername());
-        Glide.with(this)
-                .load(tenant.getThumUrl())
-                .into(H_image_1);
+//        tenant = new Tenant("ternant001", "123456", "Pep Guardiola", "https://s.net.vn/hMT4", "0384576368", "Long An", "18", "men", "no-room", null);
+
+        tenant = SessionManager.getInstance().getCurrentTenant();
+        Admin admin = SessionManager.getInstance().getAdmin();
+
+        if (tenant != null) {
+            //tam thoi, gan cung image cho dep
+            tenant.setThumUrl("https://s.net.vn/hMT4");
+            H_tv_username.setText(tenant.getName());
+            Glide.with(this)
+                    .load(tenant.getThumUrl())
+                    .into(H_image_1);
+        } else {
+            H_tv_username.setText(admin.getName());
+            Glide.with(this)
+                    .load(admin.getThumUrl())
+                    .into(H_image_1);
+        }
     }
     private void func3_TenantManagement(){
         H_img_func3_tenant_management.setOnClickListener(new View.OnClickListener() {

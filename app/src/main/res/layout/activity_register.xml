@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
+    tools:context=".Activity.RegisterActivity"
     android:background="@color/background">
 
     <ImageView
@@ -30,10 +30,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/R_image_icon_back"
-        android:layout_marginTop="30dp"
         android:text="Welcome Onbard!"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/black"
         android:id="@+id/R_txt_1"
@@ -47,7 +47,6 @@
         android:layout_centerHorizontal="true"
         android:textSize="14sp"
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"
         android:id="@+id/R_txt_2"
         />
 
@@ -57,69 +56,113 @@
         android:orientation="vertical"
         android:layout_below="@id/R_txt_2"
         android:padding="20dp"
-
         android:id="@+id/ly_1">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:textColor="@color/primaryColor"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/poppinsregular"/>
         <EditText
-            android:id="@+id/edt_username"
+            android:id="@+id/edt_email"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:hint="Username"
+            android:layout_height="40dp"
+            android:hint="example@gmail.com"
             android:paddingLeft="20dp"
             android:textSize="18sp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsregular"
+            android:inputType="textEmailAddress"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Password: "
+            android:textColor="@color/primaryColor"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/poppinsregular"/>
         <EditText
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="40dp"
             android:hint="Password"
-            android:layout_marginTop="10dp"
             android:paddingLeft="20dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsregular"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Name: "
+            android:textColor="@color/primaryColor"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/poppinsregular"/>
         <EditText
             android:id="@+id/edt_name"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="40dp"
             android:hint="Name"
-            android:layout_marginTop="10dp"
             android:paddingLeft="20dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsregular"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Phone Number: "
+            android:textColor="@color/primaryColor"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/poppinsregular"/>
         <EditText
             android:id="@+id/edt_conf_phone"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:hint="Phone Number"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:hint="ex: 0384576368"
             android:paddingLeft="20dp"
+            android:inputType="phone"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsregular"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Address: "
+            android:textColor="@color/primaryColor"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/poppinsregular"/>
         <EditText
             android:id="@+id/edt_conf_address"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="40dp"
             android:hint="Address"
-            android:layout_marginTop="10dp"
             android:paddingLeft="20dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsregular"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Age: "
+            android:textColor="@color/primaryColor"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/poppinsregular"/>
 <!--        ////////////////////////-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,22 +174,21 @@
             <EditText
                 android:id="@+id/edt_conf_age"
                 android:layout_width="180dp"
-                android:layout_height="57dp"
+                android:layout_height="40dp"
                 android:hint="Age"
-                android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black"
                 android:background="@drawable/button_shape"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinsregular"
+                android:inputType="number"
                 />
 
             <LinearLayout
                 android:gravity="center"
                 android:layout_width="130dp"
-                android:layout_height="57dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:background="@drawable/button_shape"
                 android:backgroundTint="@color/white"
@@ -155,7 +197,7 @@
 
                 <Spinner
                     android:id="@+id/R_spinner_gender"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:textAlignment="center"
                     android:textColor="@color/black"

@@ -1,6 +1,20 @@
 package com.example.quanlynhatro.Entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "room")
 public class Room {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String roomCode;
     private String roomUrlImage;
     private String roomSize;
@@ -54,10 +68,12 @@ public class Room {
     public void setRoomPrice(String roomPrice) {
         this.roomPrice = roomPrice;
     }
+
     @Override
     public String toString() {
         return "Room{" +
-                "roomCode='" + roomCode + '\'' +
+                "id=" + id +
+                ", roomCode='" + roomCode + '\'' +
                 ", roomUrlImage='" + roomUrlImage + '\'' +
                 ", roomSize='" + roomSize + '\'' +
                 ", roomStatus='" + roomStatus + '\'' +

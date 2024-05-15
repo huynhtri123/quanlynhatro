@@ -1,6 +1,12 @@
 package com.example.quanlynhatro.Entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "account")
 public class Account {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String username;
     private String password;
 
@@ -11,9 +17,18 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setUsername(String username) {

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Personal_InfoActivity"
+    tools:context=".Activity.Personal_InfoActivity"
     android:background="@color/background"
     android:orientation="vertical">
 
@@ -78,19 +78,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="username: "
+                android:text="email: "
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
 
             <EditText
-                android:id="@+id/PI_edt_username"
+                android:id="@+id/PI_edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/button_shape2"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinssemibold"
-                android:hint="Username"
+                android:hint="Email"
                 android:enabled="false"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black" />
