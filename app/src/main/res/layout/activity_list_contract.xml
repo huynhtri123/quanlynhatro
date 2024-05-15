@@ -8,7 +8,7 @@
     tools:context=".Activity.ListContractActivity"
     android:orientation="vertical"
     android:layout_centerHorizontal="true"
-    android:background="@color/background">
+    android:background="@color/xanh_coban">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:id="@+id/LR_btn_1"
-        android:background="@drawable/list_room_button"
+        android:background="@drawable/btn_approve"
         android:text="ALL CONTRACT"
         android:fontFamily="@font/poppinsbold"
         android:textSize="18dp"
