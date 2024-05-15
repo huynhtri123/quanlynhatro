@@ -1,4 +1,4 @@
-package com.example.quanlynhatro;
+package com.example.quanlynhatro.Adapter;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quanlynhatro.Entity.Room;
+import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.Entity.Tenant;
+import com.example.quanlynhatro.R;
 
 import java.util.List;
 
@@ -41,6 +42,9 @@ public class ListTenantAdapter extends RecyclerView.Adapter<ListTenantAdapter.Li
         holder.LT_tv_name.setText(tenant.getName());
         holder.LT_tv_address.setText(tenant.getAddress());
         holder.LT_tv_roomSdt.setText(tenant.getPhone());
+//        Glide.with(holder.itemView.getContext())
+//            .load(tenant.getThumUrl())
+//            .into (holder.LT_image_1);
     }
 
     @Override

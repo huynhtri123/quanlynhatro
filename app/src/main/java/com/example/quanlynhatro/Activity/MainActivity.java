@@ -1,13 +1,15 @@
-package com.example.quanlynhatro;
+package com.example.quanlynhatro.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
+
+import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.SeedDataInitializer;
+import com.example.quanlynhatro.database.AppDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn_1;
@@ -24,10 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        //tạo tài khoản cho admin lần đầu
+        AppDatabase db = AppDatabase.getInstance(this);
+        SeedDataInitializer.initialize(db);
+
         anhxa();
         btnLoginListener();
         btnRegisternListener();
-
 
     }
 

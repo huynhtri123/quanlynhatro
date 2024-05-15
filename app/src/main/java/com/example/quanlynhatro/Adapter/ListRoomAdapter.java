@@ -1,4 +1,4 @@
-package com.example.quanlynhatro;
+package com.example.quanlynhatro.Adapter;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.Entity.Room;
+import com.example.quanlynhatro.R;
 
 import java.util.List;
 
