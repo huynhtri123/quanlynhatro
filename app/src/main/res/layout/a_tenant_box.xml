@@ -136,7 +136,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/LT_btn_1"
+            android:id="@+id/LT_btn_detail"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_below="@+id/LT_ll_1"
