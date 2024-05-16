@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Adapter.ListRoomAdapter;
 import com.example.quanlynhatro.Entity.Tenant;
+import com.example.quanlynhatro.Enum.RoomStatus;
 import com.example.quanlynhatro.R;
 import com.example.quanlynhatro.database.AppDatabase;
 
@@ -47,15 +48,17 @@ public class ListRoomActivity extends AppCompatActivity {
 
         listRoomAdapter = new ListRoomAdapter();
         listRoom = new ArrayList<>();
-        //Du lieu cung
-        Room room1 = new Room("ROOM001", "https://s.net.vn/T2FO", "100m2", "Occupied", "3000$");
-        Room room2 = new Room("ROOM002", "https://s.net.vn/T2FO", "140m2", "Occupied", "600$");
-        Room room3 = new Room("ROOM003", "https://s.net.vn/T2FO", "280m2", "Occupied", "700$");
-        Room room4 = new Room("ROOM003", "https://s.net.vn/T2FO", "120m2", "Empty", "300$");
-        listRoom.add(room1);
-        listRoom.add(room2);
-        listRoom.add(room3);
-        listRoom.add(room4);
+//////////chèn dữ liệu cứng cho Room, chạy 1 lần xong comment nó lại nha
+//        Room room1 = new Room("ROOM001", "https://s.net.vn/T2FO", "100m2", RoomStatus.EMPTY.toString(), "3000$");
+//        Room room2 = new Room("ROOM002", "https://s.net.vn/T2FO", "140m2", RoomStatus.EMPTY.toString(), "600$");
+//        Room room3 = new Room("ROOM003", "https://s.net.vn/T2FO", "280m2", RoomStatus.EMPTY.toString(), "700$");
+//        Room room4 = new Room("ROOM004", "https://s.net.vn/T2FO", "120m2", RoomStatus.EMPTY.toString(), "300$");
+//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room1);
+//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room2);
+//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room3);
+//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room4);
+
+        listRoom = AppDatabase.getInstance(ListRoomActivity.this).roomDAO().getAllRooms();
 
         db = AppDatabase.getInstance(getApplicationContext());
         // Kiểm tra nếu db là null

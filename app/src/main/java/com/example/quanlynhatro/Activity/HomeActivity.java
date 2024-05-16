@@ -72,13 +72,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Admin admin = SessionManager.getInstance().getAdmin();
-                // Kiểm tra xem session có chứa admin không (có đang đang nhập = amdin k)
+                //nếu đang là tenant
                 if (admin == null) {
-                    // Nếu không có thông tin admin, có thể truy cập vào Personal_InfoActivity
                     Intent intent = new Intent(HomeActivity.this, Personal_InfoActivity.class);
                     startActivity(intent);
                 } else {
-                    // Nếu có thông tin admin trong session, hiển thị thông báo và không thực hiện thêm hành động nào
                     Toast.makeText(HomeActivity.this, "This function is not for admin", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -98,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
         H_btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Xóa thông tin tenant khỏi session
+                // Xóa session
                 SessionManager.getInstance().clearSession();
 
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
@@ -106,10 +104,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-    private void getInfoUser(){
-        //Du lieu cung
-//        tenant = new Tenant("ternant001", "123456", "Pep Guardiola", "https://s.net.vn/hMT4", "0384576368", "Long An", "18", "men", "no-room", null);
 
+    //lấy dữ liệu user hiện lên trang home
+    private void getInfoUser(){
         tenant = SessionManager.getInstance().getCurrentTenant();
         Admin admin = SessionManager.getInstance().getAdmin();
 
@@ -120,11 +117,14 @@ public class HomeActivity extends AppCompatActivity {
             Glide.with(this)
                     .load(tenant.getThumUrl())
                     .into(H_image_1);
-        } else {
+        } else if (admin != null){
             H_tv_username.setText(admin.getName());
             Glide.with(this)
                     .load(admin.getThumUrl())
                     .into(H_image_1);
+        } else {
+            Log.e("HomeActivity", "Admin is null");
+            Toast.makeText(this, "Admin information is not available", Toast.LENGTH_SHORT).show();
         }
     }
     private void func3_TenantManagement(){
@@ -136,12 +136,24 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    //chỉ có admin mới được sài
     private void func6_ContractManagement(){
         H_img_func6_contract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
                 startActivity(intent);
+
+                //chỉ có admin mới được sài
+//                Admin admin = SessionManager.getInstance().getAdmin();
+//                if (admin != null){
+//                    Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
+//                    startActivity(intent);
+//                } else {
+//                    Toast.makeText(v.getContext(), "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
     }

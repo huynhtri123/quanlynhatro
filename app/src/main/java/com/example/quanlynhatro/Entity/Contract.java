@@ -1,34 +1,59 @@
 package com.example.quanlynhatro.Entity;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+@Entity(tableName = "contract",
+        foreignKeys = {
+                @ForeignKey(entity = Tenant.class,
+                        parentColumns = "id",
+                        childColumns = "tenantId",
+                        onDelete = ForeignKey.SET_NULL),
+                @ForeignKey(entity = Room.class,
+                        parentColumns = "id",
+                        childColumns = "roomId",
+                        onDelete = ForeignKey.SET_NULL)
+})
 public class Contract {
-    private Tenant tenant;
-    private Room room;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    private Integer tenantId;
+    private Integer roomId;
     private String rentDay;
     private String status;
 
-    public Contract(Tenant tenant, Room room, String rentDay, String status) {
-        this.tenant = tenant;
-        this.room = room;
+    public Contract(int tenantId, int roomId, String rentDay, String status) {
+        this.tenantId = tenantId;
+        this.roomId = roomId;
         this.rentDay = rentDay;
         this.status = status;
     }
 
-    public Tenant getTenant() {
-        return tenant;
+    public int getId() {
+        return id;
     }
 
-    public void setTenant(Tenant tenant) {
-        this.tenant = tenant;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Room getRoom() {
-        return room;
+    public int getTenantId() {
+        return tenantId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public String getRentDay() {
@@ -45,5 +70,16 @@ public class Contract {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", tenantId=" + tenantId +
+                ", roomId=" + roomId +
+                ", rentDay=" + rentDay +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
