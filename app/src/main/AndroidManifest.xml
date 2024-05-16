@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Quanlynhatro"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Tenant_Infor_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CreateRoomActivity"
             android:exported="true">
             <intent-filter>

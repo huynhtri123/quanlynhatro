@@ -131,8 +131,15 @@ public class HomeActivity extends AppCompatActivity {
         H_img_func3_tenant_management.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ListTenantActivity.class);
-                startActivity(intent);
+                //chỉ có admin mới được sài
+                Admin admin = SessionManager.getInstance().getAdmin();
+                if (admin != null){
+                    Intent intent = new Intent(HomeActivity.this, ListTenantActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(v.getContext(), "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

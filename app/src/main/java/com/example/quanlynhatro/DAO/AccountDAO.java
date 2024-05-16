@@ -19,4 +19,7 @@ public interface AccountDAO {
 
     @Query("SELECT COUNT(*) FROM account WHERE username = :email")
     int checkEmailExists(String email);
+
+    @Query("DELETE FROM account WHERE id = :id")
+    void deleteAccountById(int id);
 }

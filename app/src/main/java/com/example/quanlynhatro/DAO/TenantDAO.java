@@ -26,4 +26,7 @@ public interface TenantDAO {
     @Query("SELECT * FROM tenant WHERE id = :id")
     Tenant getTenantById(int id);
 
+    @Query("DELETE FROM tenant WHERE id = :id")
+    void deleteTenantById(int id);
+
 }
