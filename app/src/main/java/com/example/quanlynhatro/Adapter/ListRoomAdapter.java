@@ -69,25 +69,32 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String dateTime = dateFormat.format(calendar.getTime());
 
-                //nếu là tenant mới cho đặt, admin không cho
+                // Kiểm tra xem tenant có tồn tại và không phải là admin mới cho đặt phòng
                 if (tenant != null) {
-                    //nếu tenant chưa có phòng mới cho đặt
-                    if (tenant.getRoomStatus().equals(TenantRoomStatus.NO_ROOM.name())) {
-                        //nếu phòng đó còn trống mới cho đặt
-                        if (!room.getRoomStatus().equals(RoomStatus.OCCUPIED.name())) {
-                            //Tạo Contract mới
-                            Contract contract = new Contract(tenant.getId(), room.getId(), dateTime.toString(), status);
-                            AppDatabase.getInstance(v.getContext()).contractDAO().insertContract(contract);
-
-                            Toast.makeText(v.getContext(), "Đã gửi yêu cầu đặt phòng!", Toast.LENGTH_SHORT).show();
-
-                            Intent intent = new Intent(v.getContext(), HomeActivity.class);
-                            v.getContext().startActivity(intent);
-                        } else {
-                            Toast.makeText(v.getContext(), "Phòng không còn trống!", Toast.LENGTH_SHORT).show();
-                        }
+                    // Kiểm tra xem tenant đã có hợp đồng nào chưa
+                    List<Contract> existingContracts = AppDatabase.getInstance(v.getContext())
+                            .contractDAO().getContractsByTenantIdAndRoomId(tenant.getId(), room.getId());
+                    if (existingContracts != null && existingContracts.size() > 0) {
+                        Toast.makeText(v.getContext(), "Tenant đã có hợp đồng với phòng này!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(v.getContext(), "Tenant đã có phòng!", Toast.LENGTH_SHORT).show();
+                        //nếu tenant chưa có phòng mới cho đặt
+                        if (tenant.getRoomStatus().equals(TenantRoomStatus.NO_ROOM.name())) {
+                            //nếu phòng đó còn trống mới cho đặt
+                            if (!room.getRoomStatus().equals(RoomStatus.OCCUPIED.name())) {
+                                //Tạo Contract mới
+                                Contract contract = new Contract(tenant.getId(), room.getId(), dateTime.toString(), status);
+                                AppDatabase.getInstance(v.getContext()).contractDAO().insertContract(contract);
+
+                                Toast.makeText(v.getContext(), "Đã gửi yêu cầu đặt phòng!", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(v.getContext(), HomeActivity.class);
+                                v.getContext().startActivity(intent);
+                            } else {
+                                Toast.makeText(v.getContext(), "Phòng không còn trống!", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(v.getContext(), "Tenant đã có phòng!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else {
                     Toast.makeText(v.getContext(), "Admin không thể đặt phòng!", Toast.LENGTH_SHORT).show();

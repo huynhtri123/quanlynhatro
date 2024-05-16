@@ -23,4 +23,13 @@ public interface ContractDAO {
     @Query("SELECT * FROM contract WHERE tenantId = :tenantId")
     public List<Contract> getContractsByTenantId(int tenantId);
 
+    @Query("SELECT * FROM contract WHERE tenantId = :tenantId AND roomId = :roomId")
+    public List<Contract> getContractsByTenantIdAndRoomId(int tenantId, int roomId);
+
+    @Query("SELECT * FROM contract WHERE status = 'NOT_APPROVED'")
+    public List<Contract> getNotApprovedContracts();
+
+    @Query("SELECT * FROM contract WHERE tenantID = :tenantId AND status = 'NOT_APPROVED'")
+    public List<Contract> getNotApprovedContractsById(int tenantId);
+
 }

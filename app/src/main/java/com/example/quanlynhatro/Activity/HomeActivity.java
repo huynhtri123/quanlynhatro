@@ -142,15 +142,17 @@ public class HomeActivity extends AppCompatActivity {
         H_img_func6_contract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
+                startActivity(intent);
 
-                Admin admin = SessionManager.getInstance().getAdmin();
                 //chỉ có admin mới được sài
-                if (admin != null){
-                    Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(v.getContext(), "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
-                }
+//                Admin admin = SessionManager.getInstance().getAdmin();
+//                if (admin != null){
+//                    Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
+//                    startActivity(intent);
+//                } else {
+//                    Toast.makeText(v.getContext(), "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });
