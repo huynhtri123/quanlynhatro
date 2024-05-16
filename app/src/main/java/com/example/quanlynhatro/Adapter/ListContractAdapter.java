@@ -19,6 +19,7 @@ import com.example.quanlynhatro.Entity.Invoice;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Enum.ContractStatus;
+import com.example.quanlynhatro.Enum.InvoiceStatus;
 import com.example.quanlynhatro.Enum.RoomStatus;
 import com.example.quanlynhatro.Enum.TenantRoomStatus;
 import com.example.quanlynhatro.R;
@@ -92,7 +93,7 @@ public class ListContractAdapter extends RecyclerView.Adapter<ListContractAdapte
                         AppDatabase.getInstance(context).contractDAO().updateContract(contract);
 
                         //tạo hoá đơn
-                        Invoice invoice = new Invoice(room.getId(), tenant.getId(), "0", "0", "0", "0", "0");
+                        Invoice invoice = new Invoice(room.getId(), tenant.getId(), "0", "0", "0", "0", InvoiceStatus.UN_PAID.name());
                         AppDatabase.getInstance(context).invoiceDAO().insertInvoice(invoice);
 
                         notifyDataSetChanged();
