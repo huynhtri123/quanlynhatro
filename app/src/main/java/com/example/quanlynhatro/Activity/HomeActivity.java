@@ -14,9 +14,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.Entity.Account;
 import com.example.quanlynhatro.Entity.Admin;
+import com.example.quanlynhatro.Entity.Invoice;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.R;
 import com.example.quanlynhatro.SessionManager;
+import com.example.quanlynhatro.database.AppDatabase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView H_img_func8_rent_room;
     private ImageView H_img_func9_reminders;
     private Tenant tenant;
+    private  Admin admin;
     private void anhxa(){
         H_tv_username = findViewById(R.id.H_tv_username);
         H_image_1 = findViewById(R.id.H_image_1);
@@ -64,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         func1_personal_info();
         func2_listRooms();
         func3_TenantManagement();
+        func4_invoiceManagement();
         func6_ContractManagement();
     }
 
@@ -108,7 +112,7 @@ public class HomeActivity extends AppCompatActivity {
     //lấy dữ liệu user hiện lên trang home
     private void getInfoUser(){
         tenant = SessionManager.getInstance().getCurrentTenant();
-        Admin admin = SessionManager.getInstance().getAdmin();
+        admin = SessionManager.getInstance().getAdmin();
 
         if (tenant != null) {
             //tam thoi, gan cung image cho dep
@@ -137,6 +141,29 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    //invoice
+    private void func4_invoiceManagement(){
+        H_img_func4_invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //nếu là admin thì dẫn vào trang list invoice
+                if (admin != null){
+                    Intent intent = new Intent(HomeActivity.this, ListInvoiceActivity.class);
+                    startActivity(intent);
+                } else {
+                    //nếu là tenant thì dẫn vào trang invoice detail (nếu có)
+                    Invoice invoice = AppDatabase.getInstance(HomeActivity.this).invoiceDAO().getInvoiceByUserId(tenant.getId());
+                    if (invoice != null){
+                        Intent intent = new Intent(HomeActivity.this, InvoiceDetailActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(v.getContext(), "Bạn không có hoá đơn nào!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+    }
+
     //chỉ có admin mới được sài
     private void func6_ContractManagement(){
         H_img_func6_contract.setOnClickListener(new View.OnClickListener() {
@@ -144,16 +171,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
                 startActivity(intent);
-
-                //chỉ có admin mới được sài
-//                Admin admin = SessionManager.getInstance().getAdmin();
-//                if (admin != null){
-//                    Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
-//                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(v.getContext(), "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
-//                }
-
             }
         });
     }

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlynhatro.Activity.ListContractActivity;
 import com.example.quanlynhatro.Entity.Contract;
+import com.example.quanlynhatro.Entity.Invoice;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Enum.ContractStatus;
@@ -76,32 +77,39 @@ public class ListContractAdapter extends RecyclerView.Adapter<ListContractAdapte
             @Override
             public void onClick(View v) {
                 if (room.getRoomStatus().equals(RoomStatus.EMPTY.name())){
-                    // đổi trạng thái cho tenant:
-                    tenant.setRoomStatus(TenantRoomStatus.HAS_ROOM.name());
-                    tenant.setRoomId(room.getId());
-                    AppDatabase.getInstance(context).tenantDAO().updateTenant(tenant);
+                    if (tenant.getRoomStatus().equals(TenantRoomStatus.NO_ROOM.name())){
+                        // đổi trạng thái cho tenant:
+                        tenant.setRoomStatus(TenantRoomStatus.HAS_ROOM.name());
+                        tenant.setRoomId(room.getId());
+                        AppDatabase.getInstance(context).tenantDAO().updateTenant(tenant);
 
-                    // đổi trạng thái phòng
-                    room.setRoomStatus(RoomStatus.OCCUPIED.name());
-                    AppDatabase.getInstance(context).roomDAO().updateRoom(room);
+                        // đổi trạng thái phòng
+                        room.setRoomStatus(RoomStatus.OCCUPIED.name());
+                        AppDatabase.getInstance(context).roomDAO().updateRoom(room);
 
-                    // đổi trạng thái hợp đồng
-                    contract.setStatus(ContractStatus.APPROVED.name());
-                    AppDatabase.getInstance(context).contractDAO().updateContract(contract);
+                        // đổi trạng thái hợp đồng
+                        contract.setStatus(ContractStatus.APPROVED.name());
+                        AppDatabase.getInstance(context).contractDAO().updateContract(contract);
 
-                    notifyDataSetChanged();
-                    notifyItemChanged(currentPosition);
+                        //tạo hoá đơn
+                        Invoice invoice = new Invoice(room.getId(), tenant.getId(), "0", "0", "0", "0", "0");
+                        AppDatabase.getInstance(context).invoiceDAO().insertInvoice(invoice);
 
-                    Toast.makeText(v.getContext(), "Đã duyệt hợp đồng!", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                        notifyDataSetChanged();
+                        notifyItemChanged(currentPosition);
+
+                        Toast.makeText(v.getContext(), "Đã duyệt hợp đồng!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Mỗi tenant chỉ có thể đặt tối đa 1 phòng!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
                     Toast.makeText(v.getContext(), "Phòng không còn trống!", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
-        // huỷ hợp đồng
+        // huỷ duyệt hợp đồng
         holder.LC_btn_remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +125,10 @@ public class ListContractAdapter extends RecyclerView.Adapter<ListContractAdapte
                 // đổi trạng thái hợp đồng
                 contract.setStatus(ContractStatus.NOT_APPROVED.name());
                 AppDatabase.getInstance(context).contractDAO().updateContract(contract);
+
+                //xoá invoice
+                Invoice invoice = AppDatabase.getInstance(context).invoiceDAO().getInvoiceByUserId(tenant.getId());
+                AppDatabase.getInstance(context).invoiceDAO().deleteInvoice(invoice);
 
                 notifyDataSetChanged();
                 notifyItemChanged(currentPosition);

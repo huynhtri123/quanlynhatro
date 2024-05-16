@@ -15,6 +15,7 @@ import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Adapter.ListInvoiceAdapter;
 import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.database.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +41,7 @@ public class ListInvoiceActivity extends AppCompatActivity {
 
         listInvoiceAdapter = new ListInvoiceAdapter();
         listInvoice= new ArrayList<>();
-        //Du lieu cung
-        Account account = new Account("A", "123");
-        Room room1 = new Room("123","","130m2","Empty","1000");
-        Tenant tenant1= new Tenant(account.getId(),"Van A","","0123456789","HCM","18","Nam", "no-room", null);
-        Invoice invoice1 = new Invoice(room1,tenant1,"100000","100000","100000","100000","Unpaid");
-
-        listInvoice.add(invoice1);
-
+        listInvoice = AppDatabase.getInstance(ListInvoiceActivity.this).invoiceDAO().getAllInvoices();
 
         listInvoiceAdapter.setData(listInvoice);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
