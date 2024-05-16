@@ -1,17 +1,34 @@
 package com.example.quanlynhatro.Entity;
 
-public class Invoice {
-    private Room room;
-    private Tenant tenant;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "invoice",
+        foreignKeys = {
+                @ForeignKey(entity = Tenant.class,
+                        parentColumns = "id",
+                        childColumns = "tenantId",
+                        onDelete = ForeignKey.SET_NULL),
+                @ForeignKey(entity = Room.class,
+                        parentColumns = "id",
+                        childColumns = "roomId",
+                        onDelete = ForeignKey.SET_NULL)
+        })
+public class Invoice{
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    private Integer roomId;
+    private Integer tenantId;
     private String electricityCost;
     private String waterCost;
     private String parkingCost;
     private String wifiCost;
     private String status;
 
-    public Invoice(Room room, Tenant tenant, String electricityCost, String waterCost, String parkingCost, String wifiCost, String status) {
-        this.room = room;
-        this.tenant = tenant;
+    public Invoice(Integer roomId, Integer tenantId, String electricityCost, String waterCost, String parkingCost, String wifiCost, String status) {
+        this.roomId = roomId;
+        this.tenantId = tenantId;
         this.electricityCost = electricityCost;
         this.waterCost = waterCost;
         this.parkingCost = parkingCost;
@@ -19,20 +36,42 @@ public class Invoice {
         this.status = status;
     }
 
-    public Room getRoom() {
-        return room;
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "id=" + id +
+                ", roomId=" + roomId +
+                ", tenantId=" + tenantId +
+                ", electricityCost='" + electricityCost + '\'' +
+                ", waterCost='" + waterCost + '\'' +
+                ", parkingCost='" + parkingCost + '\'' +
+                ", wifiCost='" + wifiCost + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public int getId() {
+        return id;
     }
 
-    public Tenant getTenant() {
-        return tenant;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTenant(Tenant tenant) {
-        this.tenant = tenant;
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public Integer getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Integer tenantId) {
+        this.tenantId = tenantId;
     }
 
     public String getElectricityCost() {
@@ -66,6 +105,7 @@ public class Invoice {
     public void setWifiCost(String wifiCost) {
         this.wifiCost = wifiCost;
     }
+
     public String getStatus() {
         return status;
     }
@@ -73,14 +113,16 @@ public class Invoice {
     public void setStatus(String status) {
         this.status = status;
     }
-    // Hàm tính tổng hóa đơn
+    // Hàm tính tổng hóa đơn tiền phụ phí
     public double calculateTotalBill() {
-        double roomPrice = Double.parseDouble(room.getRoomPrice());
+//        double roomPrice = Double.parseDouble(room.getRoomPrice());
         double electricity = Double.parseDouble(electricityCost);
         double water = Double.parseDouble(waterCost);
         double parking = Double.parseDouble(parkingCost);
         double wifi = Double.parseDouble(wifiCost);
 
-        return roomPrice + electricity + water + parking + wifi;
+//        return roomPrice + electricity + water + parking + wifi;
+        return electricity + water + parking + wifi;
     }
+
 }

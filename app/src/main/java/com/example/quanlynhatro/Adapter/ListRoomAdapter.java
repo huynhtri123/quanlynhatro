@@ -75,7 +75,7 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                     List<Contract> existingContracts = AppDatabase.getInstance(v.getContext())
                             .contractDAO().getContractsByTenantIdAndRoomId(tenant.getId(), room.getId());
                     if (existingContracts != null && existingContracts.size() > 0) {
-                        Toast.makeText(v.getContext(), "Tenant đã có hợp đồng với phòng này!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "Bạn đã có hợp đồng với phòng này!", Toast.LENGTH_SHORT).show();
                     } else {
                         //nếu tenant chưa có phòng mới cho đặt
                         if (tenant.getRoomStatus().equals(TenantRoomStatus.NO_ROOM.name())) {
@@ -93,7 +93,7 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                                 Toast.makeText(v.getContext(), "Phòng không còn trống!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(v.getContext(), "Tenant đã có phòng!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Bạn chỉ có thể đặt tối đa 1 phòng!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {

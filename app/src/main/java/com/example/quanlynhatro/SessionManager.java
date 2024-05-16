@@ -2,6 +2,7 @@ package com.example.quanlynhatro;
 
 import com.example.quanlynhatro.Entity.Account;
 import com.example.quanlynhatro.Entity.Admin;
+import com.example.quanlynhatro.Entity.Invoice;
 import com.example.quanlynhatro.Entity.Tenant;
 
 //session
@@ -10,6 +11,15 @@ public class SessionManager {
     private Tenant currentTenant;
     private Account account;
     private Admin admin;
+    private Invoice invoice;
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
 
     public Admin getAdmin() {
         return admin;
@@ -49,5 +59,8 @@ public class SessionManager {
         currentTenant = null;
         account = null;
         admin = null;
+    }
+    public void clearInvoice(){
+        invoice = null;
     }
 }
