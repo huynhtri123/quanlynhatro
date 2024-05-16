@@ -75,23 +75,29 @@ public class ListContractAdapter extends RecyclerView.Adapter<ListContractAdapte
         holder.LC_btn_approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // đổi trạng thái cho tenant:
-                tenant.setRoomStatus(TenantRoomStatus.HAS_ROOM.name());
-                tenant.setRoomId(room.getId());
-                AppDatabase.getInstance(context).tenantDAO().updateTenant(tenant);
+                if (room.getRoomStatus().equals(RoomStatus.EMPTY.name())){
+                    // đổi trạng thái cho tenant:
+                    tenant.setRoomStatus(TenantRoomStatus.HAS_ROOM.name());
+                    tenant.setRoomId(room.getId());
+                    AppDatabase.getInstance(context).tenantDAO().updateTenant(tenant);
 
-                // đổi trạng thái phòng
-                room.setRoomStatus(RoomStatus.OCCUPIED.name());
-                AppDatabase.getInstance(context).roomDAO().updateRoom(room);
+                    // đổi trạng thái phòng
+                    room.setRoomStatus(RoomStatus.OCCUPIED.name());
+                    AppDatabase.getInstance(context).roomDAO().updateRoom(room);
 
-                // đổi trạng thái hợp đồng
-                contract.setStatus(ContractStatus.APPROVED.name());
-                AppDatabase.getInstance(context).contractDAO().updateContract(contract);
+                    // đổi trạng thái hợp đồng
+                    contract.setStatus(ContractStatus.APPROVED.name());
+                    AppDatabase.getInstance(context).contractDAO().updateContract(contract);
 
-                notifyDataSetChanged();
-                notifyItemChanged(currentPosition);
+                    notifyDataSetChanged();
+                    notifyItemChanged(currentPosition);
 
-                Toast.makeText(v.getContext(), "Đã duyệt hợp đồng!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), "Đã duyệt hợp đồng!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(v.getContext(), "Phòng không còn trống!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

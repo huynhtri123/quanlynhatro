@@ -9,12 +9,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.quanlynhatro.Adapter.ListBookingRequestAdapter;
 import com.example.quanlynhatro.Entity.Account;
+import com.example.quanlynhatro.Entity.Admin;
 import com.example.quanlynhatro.Entity.Contract;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Adapter.ListContractAdapter;
 import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.SessionManager;
 import com.example.quanlynhatro.database.AppDatabase;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import java.util.List;
 public class ListContractActivity extends AppCompatActivity {
     private RecyclerView rcv_list_contract;
     private ListContractAdapter listContractAdapter;
+    private ListBookingRequestAdapter listBookingRequestAdapter;
     private List<Contract> listContract;
     private ImageView LR_icon_back;
     private void anhxa(){
@@ -39,14 +43,31 @@ public class ListContractActivity extends AppCompatActivity {
         anhxa();
         setIconBack();
 
-        listContractAdapter = new ListContractAdapter();
         listContract= new ArrayList<>();
-        listContract = AppDatabase.getInstance(ListContractActivity.this).contractDAO().getAllContracts();
+        //nếu ngươi dùng là admin
+        Admin admin = SessionManager.getInstance().getAdmin();
+        Tenant tenant = SessionManager.getInstance().getCurrentTenant();
+        if (admin != null){
+            listContractAdapter = new ListContractAdapter();
+            listContract = AppDatabase.getInstance(ListContractActivity.this).contractDAO().getAllContracts();
 
-        listContractAdapter.setData(listContract);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        rcv_list_contract.setLayoutManager(linearLayoutManager);
-        rcv_list_contract.setAdapter(listContractAdapter);
+            listContractAdapter.setData(listContract);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            rcv_list_contract.setLayoutManager(linearLayoutManager);
+            rcv_list_contract.setAdapter(listContractAdapter);
+        }
+        //nếu người duùng là tenant
+        else {
+            listBookingRequestAdapter = new ListBookingRequestAdapter();
+            listContract = AppDatabase.getInstance(ListContractActivity.this).contractDAO().getContractsByTenantId(tenant.getId());
+
+            listBookingRequestAdapter.setData(listContract);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            rcv_list_contract.setLayoutManager(linearLayoutManager);
+            rcv_list_contract.setAdapter(listBookingRequestAdapter);
+        }
+
+
     }
     private void setIconBack(){
         LR_icon_back.setOnClickListener(new View.OnClickListener() {
