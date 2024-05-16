@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 
@@ -25,9 +26,11 @@ public class ListTenantActivity extends AppCompatActivity {
     private ListTenantAdapter listTenantAdapter;
     private List<Tenant> listTenant;
     private ImageView LT_icon_back;
+//    private Button LT_btn_detail;
     private void anhxa(){
         rcv_list_tenant = findViewById(R.id.rcv_list_tenant);
         LT_icon_back = findViewById(R.id.LT_icon_back);
+//        LT_btn_detail = findViewById(R.id.LT_btn_detail);
     }
 
     @Override
@@ -58,4 +61,5 @@ public class ListTenantActivity extends AppCompatActivity {
             }
         });
     }
+
 }
