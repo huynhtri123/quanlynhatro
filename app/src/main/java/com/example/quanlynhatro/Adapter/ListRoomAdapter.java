@@ -76,7 +76,7 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                     List<Contract> existingContracts = AppDatabase.getInstance(v.getContext())
                             .contractDAO().getContractsByTenantIdAndRoomId(tenant.getId(), room.getId());
                     if (existingContracts != null && existingContracts.size() > 0) {
-                        Toast.makeText(v.getContext(), "Bạn đã có hợp đồng với phòng này!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "Bạn đã gửi yêu cầu với phòng này trước đó rồi!", Toast.LENGTH_SHORT).show();
                     } else {
                         //nếu tenant chưa có phòng mới cho đặt
                         if (tenant.getRoomStatus().equals(TenantRoomStatus.NO_ROOM.name())) {

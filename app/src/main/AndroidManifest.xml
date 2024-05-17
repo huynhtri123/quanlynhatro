@@ -29,6 +29,16 @@
         </activity>
 
         <activity
+            android:name=".Activity.ContractDetailActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".Activity.InvoiceDetailActivity"
             android:exported="true">
             <intent-filter>
@@ -37,7 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-          
         <activity
             android:name=".Activity.Tenant_Infor_Activity"
             android:exported="false" />
@@ -50,7 +59,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity.HomeActivity"
             android:exported="true">

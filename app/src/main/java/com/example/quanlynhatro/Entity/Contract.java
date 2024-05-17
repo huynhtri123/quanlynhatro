@@ -4,8 +4,6 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "contract",
         foreignKeys = {
                 @ForeignKey(entity = Tenant.class,
@@ -44,7 +42,7 @@ public class Contract {
         return tenantId;
     }
 
-    public void setTenantId(int tenantId) {
+    public void setTenantId(Integer tenantId) {
         this.tenantId = tenantId;
     }
 
@@ -52,7 +50,7 @@ public class Contract {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(Integer roomId) {
         this.roomId = roomId;
     }
 

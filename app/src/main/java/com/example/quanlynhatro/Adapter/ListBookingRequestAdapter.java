@@ -48,6 +48,8 @@ public class ListBookingRequestAdapter extends RecyclerView.Adapter<ListBookingR
         holder.LC_tv_rentDay_2.setText((CharSequence) contract.getRentDay());
         holder.LC_tv_status_2.setText(contract.getStatus());
 
+
+
     }
 
     @Override
@@ -60,8 +62,7 @@ public class ListBookingRequestAdapter extends RecyclerView.Adapter<ListBookingR
         private TextView LC_tv_roomCode_2;
         private TextView LC_tv_rentDay_2;
         private TextView LC_tv_status_2;
-        private Button LC_btn_approve;
-//        private Button LC_btn_remove;
+        private Button LC_btn_approve;  //giờ nó là nút huỷ yêu cầu
 
         public ListBookingRequestViewHolder(@NonNull View itemView) {
             super(itemView);
