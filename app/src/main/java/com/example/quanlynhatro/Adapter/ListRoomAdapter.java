@@ -1,5 +1,6 @@
 package com.example.quanlynhatro.Adapter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -89,6 +90,8 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
 
                                 Intent intent = new Intent(v.getContext(), HomeActivity.class);
                                 v.getContext().startActivity(intent);
+                                // Đóng hoạt động hiện tại
+                                ((Activity) v.getContext()).finish();
                             } else {
                                 Toast.makeText(v.getContext(), "Phòng không còn trống!", Toast.LENGTH_SHORT).show();
                             }

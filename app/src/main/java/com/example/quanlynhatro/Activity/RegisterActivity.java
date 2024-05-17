@@ -113,6 +113,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
+        // Đóng hoạt động hiện tại
+        finish();
     }
 
     private void resertInput(){
@@ -130,6 +132,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }
@@ -139,6 +143,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.quanlynhatro.Adapter;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -66,6 +67,8 @@ public class ListTenantAdapter extends RecyclerView.Adapter<ListTenantAdapter.Li
                 // Thông báo sự thay đổi trong danh sách để cập nhật giao diện
                 notifyDataSetChanged();
                 context.startActivity(intent);
+                // Đóng hoạt động hiện tại
+                ((Activity) context).finish();
             }
         });
 

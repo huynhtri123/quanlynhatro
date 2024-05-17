@@ -85,6 +85,8 @@ public class ListRoomActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ListRoomActivity.this, HomeActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }
@@ -94,6 +96,8 @@ public class ListRoomActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ListRoomActivity.this, CreateRoomActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

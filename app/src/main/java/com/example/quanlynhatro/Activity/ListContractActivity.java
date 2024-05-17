@@ -75,6 +75,8 @@ public class ListContractActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ListContractActivity.this, HomeActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

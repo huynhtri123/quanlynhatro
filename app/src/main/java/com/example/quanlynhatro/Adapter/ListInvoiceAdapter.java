@@ -1,5 +1,6 @@
 package com.example.quanlynhatro.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -75,6 +76,8 @@ public class ListInvoiceAdapter extends RecyclerView.Adapter<ListInvoiceAdapter.
                 SessionManager.getInstance().setInvoice(invoice);
                 Intent intent = new Intent(context, InvoiceDetailActivity.class);
                 context.startActivity(intent);
+                // Đóng hoạt động hiện tại
+                ((Activity) context).finish();
             }
         });
 

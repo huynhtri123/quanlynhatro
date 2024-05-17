@@ -58,6 +58,8 @@ public class ListTenantActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ListTenantActivity.this, HomeActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

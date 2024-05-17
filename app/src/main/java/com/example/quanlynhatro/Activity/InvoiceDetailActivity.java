@@ -189,9 +189,13 @@ public class InvoiceDetailActivity extends AppCompatActivity {
                 if (tenant != null){
                     Intent intent = new Intent(InvoiceDetailActivity.this, HomeActivity.class);
                     startActivity(intent);
+                    // Đóng hoạt động hiện tại
+                    finish();
                 } else {
                     Intent intent = new Intent(InvoiceDetailActivity.this, ListInvoiceActivity.class);
                     startActivity(intent);
+                    // Đóng hoạt động hiện tại
+                    finish();
                 }
             }
         });

@@ -102,7 +102,8 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
 
         Intent intent = new Intent(Tenant_Infor_Activity.this, ListTenantActivity.class);
         startActivity(intent);
-        // Hiển thị thông báo hoặc cập nhật giao diện người dùng sau khi xóa
+        // Đóng hoạt động hiện tại
+        finish();
     }
     private void setText(Tenant tenant, Account account){
         TI_edt_email.setText(account.getUsername());
@@ -126,6 +127,8 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Tenant_Infor_Activity.this, ListTenantActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

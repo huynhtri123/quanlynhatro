@@ -54,6 +54,8 @@ public class ListInvoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ListInvoiceActivity.this, HomeActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

@@ -69,6 +69,9 @@ public class CreateRoomActivity extends AppCompatActivity {
         Toast.makeText(this, "Phòng đã được lưu", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(CreateRoomActivity.this, ListRoomActivity.class);
         startActivity(intent);
+
+        // Đóng hoạt động hiện tại
+        finish();
     }
     private void setIconBack(){
         LR_icon_back.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +79,8 @@ public class CreateRoomActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CreateRoomActivity.this, ListRoomActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }

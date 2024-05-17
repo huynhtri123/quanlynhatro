@@ -80,6 +80,8 @@ public class HomeActivity extends AppCompatActivity {
                 if (admin == null) {
                     Intent intent = new Intent(HomeActivity.this, Personal_InfoActivity.class);
                     startActivity(intent);
+                    // Đóng hoạt động hiện tại
+                    finish();
                 } else {
                     Toast.makeText(HomeActivity.this, "This function is not for admin", Toast.LENGTH_SHORT).show();
                 }
@@ -93,6 +95,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ListRoomActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }
@@ -105,6 +109,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }
@@ -140,6 +146,8 @@ public class HomeActivity extends AppCompatActivity {
                 if (admin != null){
                     Intent intent = new Intent(HomeActivity.this, ListTenantActivity.class);
                     startActivity(intent);
+                    // Đóng hoạt động hiện tại
+                    finish();
                 } else {
                     Toast.makeText(v.getContext(), "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
                 }
@@ -157,12 +165,16 @@ public class HomeActivity extends AppCompatActivity {
                 if (admin != null){
                     Intent intent = new Intent(HomeActivity.this, ListInvoiceActivity.class);
                     startActivity(intent);
+                    // Đóng hoạt động hiện tại
+                    finish();
                 } else {
                     //nếu là tenant thì dẫn vào trang invoice detail (nếu có)
                     Invoice invoice = AppDatabase.getInstance(HomeActivity.this).invoiceDAO().getInvoiceByUserId(tenant.getId());
                     if (invoice != null){
                         Intent intent = new Intent(HomeActivity.this, InvoiceDetailActivity.class);
                         startActivity(intent);
+                        // Đóng hoạt động hiện tại
+                        finish();
                     } else {
                         Toast.makeText(v.getContext(), "Bạn không có hoá đơn nào!", Toast.LENGTH_SHORT).show();
                     }
@@ -178,6 +190,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ListContractActivity.class);
                 startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
             }
         });
     }
