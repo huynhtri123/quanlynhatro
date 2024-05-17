@@ -1,6 +1,7 @@
 package com.example.quanlynhatro.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -19,6 +20,12 @@ public interface ContractDAO {
 
     @Query("SELECT * FROM contract")
     public List<Contract> getAllContracts();
+
+    @Delete
+    public void deleteContract(Contract contract);
+
+    @Query("SELECT * FROM contract WHERE id = :contractId")
+    public Contract getContractById(int contractId);
 
     @Query("SELECT * FROM contract WHERE tenantId = :tenantId")
     public List<Contract> getContractsByTenantId(int tenantId);
