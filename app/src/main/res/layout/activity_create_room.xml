@@ -46,16 +46,11 @@
             android:hint="Kích Thước Phòng" />
 
         <EditText
-            android:id="@+id/etRoomStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Trạng Thái Phòng" />
-
-        <EditText
             android:id="@+id/etRoomPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Giá Phòng" />
+            android:hint="Giá Phòng ($)"
+            android:inputType="number"/>
 
         <Button
             android:id="@+id/btnSave"

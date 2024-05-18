@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Activity.UpdateRoomActivity">
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.ContractDetailActivity"
         android:background="@color/background"
         android:orientation="vertical">
 
@@ -35,9 +34,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:text="CONTRACT'S DETAIL"
+                android:text="UPDATE ROOM"
                 android:textSize="22sp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="80dp"
                 android:fontFamily="@font/poppinsbold"
                 android:layout_gravity="center" />
 
@@ -59,162 +58,83 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tenant name: "
+                android:text="Room code: "
                 android:textColor="@color/xanh1"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
 
             <EditText
-                android:id="@+id/PI_edt_name"
+                android:id="@+id/PI_edt_room_code"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Name"
+                android:hint="ROOM CODE"
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:background="@drawable/button_shape2"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinssemibold"
-                android:inputType="none"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tenant phone: "
+                android:text="Room price ($): "
                 android:layout_marginTop="10dp"
                 android:textColor="@color/xanh1"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
 
             <EditText
-                android:id="@+id/PI_edt_phone"
+                android:id="@+id/PI_edt_room_price"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Phone"
+                android:hint="500"
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:background="@drawable/button_shape2"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinssemibold"
-                android:inputType="none"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tenant address: "
+                android:text="Room size: "
                 android:layout_marginTop="10dp"
                 android:textColor="@color/xanh1"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
 
             <EditText
-                android:id="@+id/PI_edt_address"
+                android:id="@+id/PI_edt_room_size"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Address"
+                android:hint="SIZE"
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:background="@drawable/button_shape2"
                 android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinssemibold"
-                android:inputType="none"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                android:fontFamily="@font/poppinssemibold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Room info: "
-                android:layout_marginTop="10dp"
-                android:textColor="@color/xanh1"
-                android:paddingLeft="20dp"
-                android:fontFamily="@font/poppinsregular"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/PI_edt_roomcode"
-                    android:layout_width="180dp"
-                    android:layout_height="50dp"
-                    android:hint="Room Code"
-                    android:textColor="@color/black"
-                    android:paddingLeft="20dp"
-                    android:background="@drawable/button_shape2"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:inputType="none"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"/>
-
-                <EditText
-                    android:id="@+id/PI_edt_roomprice"
-                    android:layout_width="180dp"
-                    android:layout_height="50dp"
-                    android:hint="Room Price"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black"
-                    android:paddingLeft="20dp"
-                    android:background="@drawable/button_shape2"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:inputType="none"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Created day: "
+                android:text="Room url image: "
                 android:layout_marginTop="10dp"
                 android:textColor="@color/xanh1"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
 
             <EditText
-                android:id="@+id/PI_edt_room_createdday"
+                android:id="@+id/PI_edt_room_image"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Created day"
+                android:hint="URL IMAGE"
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:background="@drawable/button_shape2"
                 android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinssemibold"
-                android:inputType="none"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contract status: "
-                android:layout_marginTop="10dp"
-                android:textColor="@color/xanh1"
-                android:paddingLeft="20dp"
-                android:fontFamily="@font/poppinsregular"/>
-
-            <EditText
-                android:id="@+id/PI_edt_roomstatus"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Status"
-                android:textColor="@color/red_dark"
-                android:paddingLeft="20dp"
-                android:background="@drawable/button_shape2"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinssemibold"
-                android:inputType="none"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                android:fontFamily="@font/poppinssemibold"/>
 
         </LinearLayout>
 
@@ -226,39 +146,22 @@
             android:padding="10dp">
 
             <Button
-                android:id="@+id/PI_btn_1"
+                android:id="@+id/PI_btn_update"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/PI_ll_2"
-                android:text="CANCEL"
+                android:text="UPDATE"
                 android:background="@drawable/button_shape2"
-                android:backgroundTint="@color/nau_cam"
+                android:backgroundTint="@color/xanh1"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:fontFamily="@font/poppinsbold"
                 android:gravity="center"
                 />
 
-            <Button
-                android:id="@+id/PI_btn_2"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="160dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/PI_ll_2"
-                android:text="TERMINATE"
-                android:background="@drawable/button_shape2"
-                android:backgroundTint="@color/red_dark"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:fontFamily="@font/poppinsbold"
-                android:gravity="center"
-                />
         </LinearLayout>
-
-
 
     </RelativeLayout>
 
