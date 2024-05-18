@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.quanlynhatro.Adapter.ListBookingRequestAdapter;
+
 import com.example.quanlynhatro.Entity.Account;
 import com.example.quanlynhatro.Entity.Admin;
 import com.example.quanlynhatro.Entity.Contract;
@@ -27,7 +27,6 @@ import java.util.List;
 public class ListContractActivity extends AppCompatActivity {
     private RecyclerView rcv_list_contract;
     private ListContractAdapter listContractAdapter;
-    private ListBookingRequestAdapter listBookingRequestAdapter;
     private List<Contract> listContract;
     private ImageView LR_icon_back;
     private void anhxa(){
@@ -56,15 +55,15 @@ public class ListContractActivity extends AppCompatActivity {
             rcv_list_contract.setLayoutManager(linearLayoutManager);
             rcv_list_contract.setAdapter(listContractAdapter);
         }
-        //nếu người duùng là tenant
+        //nếu người dùng là tenant
         else {
-            listBookingRequestAdapter = new ListBookingRequestAdapter();
+            listContractAdapter = new ListContractAdapter();
             listContract = AppDatabase.getInstance(ListContractActivity.this).contractDAO().getContractsByTenantId(tenant.getId());
 
-            listBookingRequestAdapter.setData(listContract);
+            listContractAdapter.setData(listContract);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
             rcv_list_contract.setLayoutManager(linearLayoutManager);
-            rcv_list_contract.setAdapter(listBookingRequestAdapter);
+            rcv_list_contract.setAdapter(listContractAdapter);
         }
 
 

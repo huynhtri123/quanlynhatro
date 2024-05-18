@@ -12,12 +12,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.quanlynhatro.Entity.Admin;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Adapter.ListRoomAdapter;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Enum.RoomStatus;
 import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.SessionManager;
 import com.example.quanlynhatro.database.AppDatabase;
 
 import java.util.ArrayList;
@@ -30,6 +33,8 @@ public class ListRoomActivity extends AppCompatActivity {
     private ImageView LR_icon_back;
     private AppDatabase db;
     private Button btnCreateRoom;
+    private Tenant tenant = SessionManager.getInstance().getCurrentTenant();
+    private Admin admin = SessionManager.getInstance().getAdmin();
 
     private void anhxa(){
         rcv_list_room = findViewById(R.id.rcv_list_room);
@@ -94,10 +99,14 @@ public class ListRoomActivity extends AppCompatActivity {
         btnCreateRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListRoomActivity.this, CreateRoomActivity.class);
-                startActivity(intent);
-                // Đóng hoạt động hiện tại
-                finish();
+                if (admin != null){
+                    Intent intent = new Intent(ListRoomActivity.this, CreateRoomActivity.class);
+                    startActivity(intent);
+                    // Đóng hoạt động hiện tại
+                    finish();
+                } else {
+                    Toast.makeText(ListRoomActivity.this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

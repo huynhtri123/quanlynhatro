@@ -106,6 +106,7 @@
             android:layout_below="@+id/LC_tv_rentDay_2"
             android:fontFamily="@font/poppinssemibold"
             android:text="status"
+            android:textColor="@color/red_dark"
             android:textSize="16sp" />
 
     </RelativeLayout>

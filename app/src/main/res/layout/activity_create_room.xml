@@ -77,28 +77,11 @@
             android:hint="Kích Thước Phòng" />
 
         <EditText
-            android:id="@+id/etRoomStatus"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_shape2"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinssemibold"
-            android:hint="Trạng Thái Phòng" />
-
-        <EditText
             android:id="@+id/etRoomPrice"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/button_shape2"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinssemibold"
-            android:hint="Giá Phòng" />
+            android:layout_height="wrap_content"
+            android:hint="Giá Phòng ($)"
+            android:inputType="number"/>
 
         <Button
             android:id="@+id/btnSave"
