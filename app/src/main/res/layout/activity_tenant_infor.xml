@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="email: "
+                android:text="Email: "
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
@@ -99,20 +99,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="password: "
+                android:text="Room: "
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:paddingLeft="20dp"
                 android:fontFamily="@font/poppinsregular"/>
 
             <EditText
-                android:id="@+id/TI_edt_password"
+                android:id="@+id/TI_edt_roomcode"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/button_shape2"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinssemibold"
-                android:hint="Password"
+                android:hint="Room code"
                 android:textCursorDrawable="@null"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black" />

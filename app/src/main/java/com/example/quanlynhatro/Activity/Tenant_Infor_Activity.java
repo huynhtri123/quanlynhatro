@@ -24,6 +24,7 @@ import com.example.quanlynhatro.Entity.Invoice;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Enum.RoomStatus;
+import com.example.quanlynhatro.Enum.TenantRoomStatus;
 import com.example.quanlynhatro.R;
 import com.example.quanlynhatro.SessionManager;
 import com.example.quanlynhatro.database.AppDatabase;
@@ -34,7 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Tenant_Infor_Activity extends AppCompatActivity {
     private EditText TI_edt_email;
-    private EditText TI_edt_password;
+    private EditText TI_edt_roomcode;
     private CircleImageView TI_image_1;
     private EditText TI_edt_name;
     private EditText TI_edt_phone;
@@ -43,10 +44,10 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
     private EditText TI_spinner_gender;
     private Button TI_btn_delete;
     private ImageView TI_icon_back;
-    private Tenant tenant;
+
     private void anhxa(){
         TI_edt_email = findViewById(R.id.TI_edt_email);
-        TI_edt_password = findViewById(R.id.TI_edt_password);
+        TI_edt_roomcode = findViewById(R.id.TI_edt_roomcode);
         TI_image_1 = findViewById(R.id.TI_image_1);
         TI_edt_name = findViewById(R.id.TI_edt_name);
         TI_edt_phone = findViewById(R.id.TI_edt_phone);
@@ -69,18 +70,6 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
         setText(tenant,account);
         setBtnDeleteOnclick(tenant);
         setIconBack();
-
-//        setSpinnerGender();
-//        setBtnDeleteOnclick();
-//        setIconBack();
-
-//        tenant = SessionManager.getInstance().getCurrentTenant();
-//        //tam thoi, gan cung image cho dep
-//        tenant.setThumUrl("https://s.net.vn/hMT4");
-//
-//        Account account = SessionManager.getInstance().getAccount();
-//
-//        setText(tenant, account);
     }
 
     private void setBtnDeleteOnclick(Tenant tenant){
@@ -101,19 +90,27 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
     private void deleteTenantFromDatabase(Tenant tenant) {
         // Truy cập vào đối tượng TenantDAO để thực hiện xóa Tenant
         TenantDAO tenantDAO = AppDatabase.getInstance(getApplicationContext()).tenantDAO();
-    //CHuyển trạng thái phòng của tenant
-        Room room = AppDatabase.getInstance(getApplicationContext()).roomDAO().getRoomById(tenant.getRoomId());
-        room.setRoomStatus(RoomStatus.EMPTY.toString());
-        AppDatabase.getInstance(getApplicationContext()).roomDAO().updateRoom(room);
+        //CHuyển trạng thái phòng của tenant
+        Integer roomId = tenant.getRoomId();
+        if (roomId != null){
+            Room room = AppDatabase.getInstance(getApplicationContext()).roomDAO().getRoomById(tenant.getRoomId());
+            room.setRoomStatus(RoomStatus.EMPTY.toString());
+            AppDatabase.getInstance(getApplicationContext()).roomDAO().updateRoom(room);
+        }
+
         // Xóa hóa đơn của tenant
         InvoiceDAO invoiceDAO = AppDatabase.getInstance(getApplicationContext()).invoiceDAO();
         Invoice invoice = invoiceDAO.getInvoiceByUserId(tenant.getId());
-        invoiceDAO.deleteInvoice(invoice);
+        if (invoice != null){
+            invoiceDAO.deleteInvoice(invoice);
+        }
+
         // Xóa hợp đồng của tenant
         ContractDAO contractDAO = AppDatabase.getInstance(getApplicationContext()).contractDAO();
         List<Contract> lContract=contractDAO.getContractsByTenantId(tenant.getId());
-        for(Contract c:lContract)
+        for(Contract c: lContract)
             contractDAO.deleteContract(c);
+
         //Xóa account của tenant
         AppDatabase.getInstance(getApplicationContext()).accountDAO().deleteAccountById(tenant.getAccountId());
         // Thực hiện xóa Tenant từ cơ sở dữ liệu bằng cách gọi phương thức deleteTenant() từ TenantDAO
@@ -121,7 +118,14 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
     }
     private void setText(Tenant tenant, Account account){
         TI_edt_email.setText(account.getUsername());
-        TI_edt_password.setText(account.getPassword());
+
+        Integer roomId = tenant.getRoomId();
+        if (roomId != null){
+            Room room = AppDatabase.getInstance(Tenant_Infor_Activity.this).roomDAO().getRoomById(tenant.getRoomId());
+            TI_edt_roomcode.setText(room.getRoomCode().toString());
+        } else {
+            TI_edt_roomcode.setText(TenantRoomStatus.NO_ROOM.name().toString());
+        }
 
         TI_edt_name.setText(tenant.getName());
         Log.d(">>>check image:", tenant.getThumUrl());
