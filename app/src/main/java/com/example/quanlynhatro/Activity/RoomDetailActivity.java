@@ -16,6 +16,7 @@ import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
 import com.example.quanlynhatro.Enum.RoomStatus;
 import com.example.quanlynhatro.R;
+import com.example.quanlynhatro.SessionManager;
 import com.example.quanlynhatro.database.AppDatabase;
 
 public class RoomDetailActivity extends AppCompatActivity {
@@ -42,6 +43,7 @@ public class RoomDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_detail);
+        getSupportActionBar().hide();
         
         anhxa();
         int room_selectedID = getIntent().getIntExtra("room_selectedID", -1);
@@ -75,8 +77,14 @@ public class RoomDetailActivity extends AppCompatActivity {
         RD_btn_make_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Gọi phương thức xóa Tenant khỏi cơ sở dữ liệu
-                deleteRoomFromDatabase(room,v);
+                Tenant tenant = SessionManager.getInstance().getCurrentTenant();
+                if (tenant == null){
+                    // Gọi phương thức xóa Tenant khỏi cơ sở dữ liệu
+                    deleteRoomFromDatabase(room,v);
+                } else {
+                    Toast.makeText(v.getContext(), "Bạn không có quyền thực hiện!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -97,8 +105,14 @@ public class RoomDetailActivity extends AppCompatActivity {
         RD_btn_make_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Gọi phương thức xóa Tenant khỏi cơ sở dữ liệu
-                saveRoomFromDatabase(room,v);
+                Tenant tenant = SessionManager.getInstance().getCurrentTenant();
+                if (tenant == null){
+                    // Gọi phương thức xóa Tenant khỏi cơ sở dữ liệu
+                    saveRoomFromDatabase(room,v);
+                } else {
+                    Toast.makeText(v.getContext(), "Bạn không có quyền thực hiện!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

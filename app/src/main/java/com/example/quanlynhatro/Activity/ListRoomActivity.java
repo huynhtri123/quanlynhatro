@@ -53,30 +53,8 @@ public class ListRoomActivity extends AppCompatActivity {
 
         listRoomAdapter = new ListRoomAdapter();
         listRoom = new ArrayList<>();
-//////////chèn dữ liệu cứng cho Room, chạy 1 lần xong comment nó lại nha
-//        Room room1 = new Room("ROOM001", "https://s.net.vn/T2FO", "100m2", RoomStatus.EMPTY.toString(), "3000");
-//        Room room2 = new Room("ROOM002", "https://s.net.vn/T2FO", "140m2", RoomStatus.EMPTY.toString(), "600");
-//        Room room3 = new Room("ROOM003", "https://s.net.vn/T2FO", "280m2", RoomStatus.EMPTY.toString(), "700");
-//        Room room4 = new Room("ROOM004", "https://s.net.vn/T2FO", "120m2", RoomStatus.EMPTY.toString(), "300");
-//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room1);
-//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room2);
-//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room3);
-//        AppDatabase.getInstance(ListRoomActivity.this).roomDAO().insertRoom(room4);
 
         listRoom = AppDatabase.getInstance(ListRoomActivity.this).roomDAO().getAllRooms();
-
-//        db = AppDatabase.getInstance(getApplicationContext());
-//        // Kiểm tra nếu db là null
-//        if (db == null) {
-//            Log.e(TAG, "Cơ sở dữ liệu không được khởi tạo!");
-//            return;
-//        }
-//        List<Room> roomList = db.roomDAO().getAllRooms();
-//
-//        for (Room r : roomList) {
-//            Log.d(TAG, r.toString());
-//            listRoom.add(r);
-//        }
 
         listRoomAdapter.setData(listRoom);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
