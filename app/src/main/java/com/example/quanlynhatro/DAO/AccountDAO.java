@@ -3,6 +3,7 @@ package com.example.quanlynhatro.DAO;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.quanlynhatro.Entity.Account;
 
@@ -22,4 +23,6 @@ public interface AccountDAO {
 
     @Query("DELETE FROM account WHERE id = :id")
     void deleteAccountById(int id);
+    @Update
+    void updateAccount(Account account);
 }
