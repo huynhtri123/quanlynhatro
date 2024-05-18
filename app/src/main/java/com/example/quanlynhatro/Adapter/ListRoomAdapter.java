@@ -17,13 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlynhatro.Activity.ContractDetailActivity;
 import com.example.quanlynhatro.Activity.HomeActivity;
-
 import com.example.quanlynhatro.Activity.RoomDetailActivity;
-import com.example.quanlynhatro.Activity.Tenant_Infor_Activity;
-
 import com.example.quanlynhatro.Activity.UpdateRoomActivity;
 import com.example.quanlynhatro.Entity.Admin;
-
 import com.example.quanlynhatro.Entity.Contract;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
@@ -54,20 +50,20 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
     }
 
     @Override
-        public void onBindViewHolder(@NonNull ListRoomViewHolder holder, int position) {
-            Room room = mListRoom.get(position);
-            Log.d(">>>check rom in list room: ", room.toString());
-            if (room == null){
-                return;
-            }
+    public void onBindViewHolder(@NonNull ListRoomViewHolder holder, int position) {
+        Room room = mListRoom.get(position);
+        Log.d(">>>check rom in list room: ", room.toString());
+        if (room == null){
+            return;
+        }
 
-            holder.LR_tv_roomCode.setText(room.getRoomCode());
+        holder.LR_tv_roomCode.setText(room.getRoomCode());
 //        Glide.with(holder.itemView.getContext())
 //                .load(room.getRoomUrlImage())
 //                .into (holder.LR_image_1);
-            holder.LR_tv_roomSize.setText(room.getRoomSize());
-            holder.LR_tv_roomStatus.setText(room.getRoomStatus());
-            holder.LR_tv_roomPrice.setText(room.getRoomPrice());
+        holder.LR_tv_roomSize.setText(room.getRoomSize());
+        holder.LR_tv_roomStatus.setText(room.getRoomStatus());
+        holder.LR_tv_roomPrice.setText(room.getRoomPrice());
 
         //Đặt phòng
         holder.LR_btn_1.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +110,26 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
             }
         });
 
-        holder.LR_btn_detail.setOnClickListener(new View.OnClickListener(){
+//        //update phong (admin)
+//        holder.LR_image_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Tenant tenant = SessionManager.getInstance().getCurrentTenant();
+//                Admin admin = SessionManager.getInstance().getAdmin();
+//                if (admin != null){
+//                    int roomId = room.getId();
+//                    String roomIdString = String.valueOf(roomId);
+//
+//                    Intent intent = new Intent(v.getContext(), UpdateRoomActivity.class);
+//                    intent.putExtra("roomIdString", roomIdString);
+//                    holder.itemView.getContext().startActivity(intent);
+//                    ((Activity) holder.itemView.getContext()).finish();
+//                }
+//            }
+//        });
+
+        //room detail
+        holder.LR_btn_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = holder.itemView.getContext();
@@ -129,22 +144,6 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                 // Đóng hoạt động hiện tại
                 ((Activity) context).finish();
 
-
-        //update phong (admin)
-        holder.LR_image_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Tenant tenant = SessionManager.getInstance().getCurrentTenant();
-                Admin admin = SessionManager.getInstance().getAdmin();
-                if (admin != null){
-                    int roomId = room.getId();
-                    String roomIdString = String.valueOf(roomId);
-
-                    Intent intent = new Intent(v.getContext(), UpdateRoomActivity.class);
-                    intent.putExtra("roomIdString", roomIdString);
-                    holder.itemView.getContext().startActivity(intent);
-                    ((Activity) holder.itemView.getContext()).finish();
-                }
             }
         });
     }
@@ -160,8 +159,8 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
         private TextView LR_tv_roomSize;
         private TextView LR_tv_roomStatus;
         private TextView LR_tv_roomPrice;
-        private Button LR_btn_detail;
         private Button LR_btn_1;
+        private Button LR_btn_detail;
         public ListRoomViewHolder(@NonNull View itemView) {
             super(itemView);
             LR_image_1 = itemView.findViewById(R.id.LR_image_1);
@@ -170,8 +169,8 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
             LR_tv_roomStatus = itemView.findViewById(R.id.LR_tv_roomStatus);
             LR_tv_roomPrice = itemView.findViewById(R.id.LR_tv_roomPrice);
             LR_btn_1 = itemView.findViewById(R.id.LR_btn_1);
-            LR_btn_detail = itemView.findViewById(R.id.LR_btn_detail);
             LR_image_1 = itemView.findViewById(R.id.LR_image_1);
+            LR_btn_detail = itemView.findViewById(R.id.LR_btn_detail);
         }
     }
 }
