@@ -14,13 +14,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.quanlynhatro.Entity.Room;
+import com.example.quanlynhatro.Enum.RoomStatus;
 import com.example.quanlynhatro.R;
 import com.example.quanlynhatro.database.AppDatabase;
 
 import java.util.List;
 
 public class CreateRoomActivity extends AppCompatActivity {
-    private EditText etRoomCode, etRoomUrlImage, etRoomSize, etRoomStatus, etRoomPrice;
+    private EditText etRoomCode, etRoomUrlImage, etRoomSize, etRoomPrice;
     private Button btnSave;
     private AppDatabase db;
     private ImageView LR_icon_back;
@@ -46,7 +47,6 @@ public class CreateRoomActivity extends AppCompatActivity {
         etRoomCode = findViewById(R.id.etRoomCode);
         etRoomUrlImage = findViewById(R.id.etRoomUrlImage);
         etRoomSize = findViewById(R.id.etRoomSize);
-        etRoomStatus = findViewById(R.id.etRoomStatus);
         etRoomPrice = findViewById(R.id.etRoomPrice);
         btnSave = findViewById(R.id.btnSave);
         LR_icon_back = findViewById(R.id.LR_icon_back);
@@ -55,15 +55,14 @@ public class CreateRoomActivity extends AppCompatActivity {
         String roomCode = etRoomCode.getText().toString();
         String roomUrlImage = etRoomUrlImage.getText().toString();
         String roomSize = etRoomSize.getText().toString();
-        String roomStatus = etRoomStatus.getText().toString();
         String roomPrice = etRoomPrice.getText().toString();
 
-        if (roomCode.isEmpty() || roomUrlImage.isEmpty() || roomSize.isEmpty() || roomStatus.isEmpty() || roomPrice.isEmpty()) {
+        if (roomCode.isEmpty() || roomUrlImage.isEmpty() || roomSize.isEmpty() || roomPrice.isEmpty()) {
             Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Room room = new Room(roomCode, roomUrlImage, roomSize, roomStatus, roomPrice);
+        Room room = new Room(roomCode, roomUrlImage, roomSize, RoomStatus.EMPTY.name(), roomPrice);
         db.roomDAO().insertRoom(room);
 
         Toast.makeText(this, "Phòng đã được lưu", Toast.LENGTH_SHORT).show();
