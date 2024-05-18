@@ -1,6 +1,7 @@
 package com.example.quanlynhatro.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -31,5 +32,7 @@ public interface ContractDAO {
 
     @Query("SELECT * FROM contract WHERE tenantID = :tenantId AND status = 'NOT_APPROVED'")
     public List<Contract> getNotApprovedContractsById(int tenantId);
+    @Delete
+    public void deleteContract(Contract contract);
 
 }

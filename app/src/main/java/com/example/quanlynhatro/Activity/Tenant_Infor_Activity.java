@@ -15,12 +15,20 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.DAO.AccountDAO;
+import com.example.quanlynhatro.DAO.ContractDAO;
+import com.example.quanlynhatro.DAO.InvoiceDAO;
 import com.example.quanlynhatro.DAO.TenantDAO;
 import com.example.quanlynhatro.Entity.Account;
+import com.example.quanlynhatro.Entity.Contract;
+import com.example.quanlynhatro.Entity.Invoice;
+import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
+import com.example.quanlynhatro.Enum.RoomStatus;
 import com.example.quanlynhatro.R;
 import com.example.quanlynhatro.SessionManager;
 import com.example.quanlynhatro.database.AppDatabase;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -86,6 +94,10 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 // Gọi phương thức xóa Tenant khỏi cơ sở dữ liệu
                 deleteTenantFromDatabase(tenant);
+                Intent intent = new Intent(Tenant_Infor_Activity.this, ListTenantActivity.class);
+                startActivity(intent);
+                // Đóng hoạt động hiện tại
+                finish();
                 Toast.makeText(v.getContext(), "Xóa thành công!", Toast.LENGTH_SHORT).show();
 
             }
@@ -94,16 +106,23 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
     private void deleteTenantFromDatabase(Tenant tenant) {
         // Truy cập vào đối tượng TenantDAO để thực hiện xóa Tenant
         TenantDAO tenantDAO = AppDatabase.getInstance(getApplicationContext()).tenantDAO();
-
+    //CHuyển trạng thái phòng của tenant
+        Room room = AppDatabase.getInstance(getApplicationContext()).roomDAO().getRoomById(tenant.getRoomId());
+        room.setRoomStatus(RoomStatus.EMPTY.toString());
+        AppDatabase.getInstance(getApplicationContext()).roomDAO().updateRoom(room);
+        // Xóa hóa đơn của tenant
+        InvoiceDAO invoiceDAO = AppDatabase.getInstance(getApplicationContext()).invoiceDAO();
+        Invoice invoice = invoiceDAO.getInvoiceByUserId(tenant.getId());
+        invoiceDAO.deleteInvoice(invoice);
+        // Xóa hợp đồng của tenant
+        ContractDAO contractDAO = AppDatabase.getInstance(getApplicationContext()).contractDAO();
+        List<Contract> lContract=contractDAO.getContractsByTenantId(tenant.getId());
+        for(Contract c:lContract)
+            contractDAO.deleteContract(c);
+        //Xóa account của tenant
+        AppDatabase.getInstance(getApplicationContext()).accountDAO().deleteAccountById(tenant.getAccountId());
         // Thực hiện xóa Tenant từ cơ sở dữ liệu bằng cách gọi phương thức deleteTenant() từ TenantDAO
         tenantDAO.deleteTenantById(tenant.getId());
-        AccountDAO accountDAO = AppDatabase.getInstance(getApplicationContext()).accountDAO();
-        accountDAO.deleteAccountById(tenant.getAccountId());
-
-        Intent intent = new Intent(Tenant_Infor_Activity.this, ListTenantActivity.class);
-        startActivity(intent);
-        // Đóng hoạt động hiện tại
-        finish();
     }
     private void setText(Tenant tenant, Account account){
         TI_edt_email.setText(account.getUsername());

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.quanlynhatro.Entity.Account;
@@ -64,7 +65,6 @@ public class Personal_InfoActivity extends AppCompatActivity {
 
         anhxa();
         setSpinnerGender();
-        setBtnSaveOnclick();
         setIconBack();
 
         tenant = SessionManager.getInstance().getCurrentTenant();
@@ -73,6 +73,7 @@ public class Personal_InfoActivity extends AppCompatActivity {
 
         Account account = SessionManager.getInstance().getAccount();
 
+        setBtnSaveOnclick(account,tenant);
         setText(tenant, account);
 
     }
@@ -83,12 +84,24 @@ public class Personal_InfoActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         PI_spinner_gender.setAdapter(adapter);
     }
-    private void setBtnSaveOnclick(){
+    private void setBtnSaveOnclick(Account account,Tenant tenant){
         PI_btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String selectedItem = PI_spinner_gender.getSelectedItem().toString();
-                Log.d(">>>check spinner gender: ", selectedItem);
+                account.setUsername(PI_edt_email.getText().toString());
+                account.setPassword(PI_edt_password.getText().toString());
+                tenant.setName(PI_edt_name.getText().toString());
+                tenant.setPhone(PI_edt_phone.getText().toString());
+                tenant.setAddress(PI_edt_address.getText().toString());
+                tenant.setAge(PI_edt_age.getText().toString());
+                tenant.setGender(PI_spinner_gender.getSelectedItem().toString());
+
+                AppDatabase.getInstance(Personal_InfoActivity.this).accountDAO().updateAccount(account);
+                AppDatabase.getInstance(Personal_InfoActivity.this).tenantDAO().updateTenant(tenant);
+
+                Toast.makeText(Personal_InfoActivity.this, "SAVED", Toast.LENGTH_SHORT).show();
+//                String selectedItem = PI_spinner_gender.getSelectedItem().toString();
+//                Log.d(">>>check spinner gender: ", selectedItem);
             }
         });
     }

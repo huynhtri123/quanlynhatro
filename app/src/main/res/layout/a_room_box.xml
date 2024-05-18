@@ -137,14 +137,24 @@
             </RelativeLayout>
 
         </LinearLayout>
-
+        <Button
+            android:id="@+id/LR_btn_detail"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/LR_ll_1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_shape"
+            android:text="DETAIL"
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/white"/>
         <Button
             android:id="@+id/LR_btn_1"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_below="@+id/LR_ll_1"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="90dp"
+            android:layout_marginLeft="120dp"
             android:background="@drawable/btn_book"
             android:text="BOOK"
             android:fontFamily="@font/poppinssemibold"

@@ -1,6 +1,7 @@
 package com.example.quanlynhatro.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlynhatro.Activity.HomeActivity;
+import com.example.quanlynhatro.Activity.RoomDetailActivity;
+import com.example.quanlynhatro.Activity.Tenant_Infor_Activity;
 import com.example.quanlynhatro.Entity.Contract;
 import com.example.quanlynhatro.Entity.Room;
 import com.example.quanlynhatro.Entity.Tenant;
@@ -104,6 +107,22 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                 }
             }
         });
+        holder.LR_btn_detail.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Context context = holder.itemView.getContext();
+//                Room room_selected = AppDatabase.getInstance(context).roomDAO().getRoomById(room.getId());
+
+                Intent intent = new Intent(context, RoomDetailActivity.class);
+                intent.putExtra("room_selectedID", room.getId());
+
+                // Thông báo sự thay đổi trong danh sách để cập nhật giao diện
+                notifyDataSetChanged();
+                context.startActivity(intent);
+                // Đóng hoạt động hiện tại
+                ((Activity) context).finish();
+            }
+        });
     }
 
     @Override
@@ -117,6 +136,7 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
         private TextView LR_tv_roomSize;
         private TextView LR_tv_roomStatus;
         private TextView LR_tv_roomPrice;
+        private Button LR_btn_detail;
         private Button LR_btn_1;
         public ListRoomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -126,6 +146,7 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
             LR_tv_roomStatus = itemView.findViewById(R.id.LR_tv_roomStatus);
             LR_tv_roomPrice = itemView.findViewById(R.id.LR_tv_roomPrice);
             LR_btn_1 = itemView.findViewById(R.id.LR_btn_1);
+            LR_btn_detail = itemView.findViewById(R.id.LR_btn_detail);
         }
     }
 }
