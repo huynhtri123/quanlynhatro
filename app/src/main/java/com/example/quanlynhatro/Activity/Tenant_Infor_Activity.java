@@ -40,7 +40,7 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
     private EditText TI_edt_phone;
     private EditText TI_edt_address;
     private EditText TI_edt_age;
-    private Spinner TI_spinner_gender;
+    private EditText TI_spinner_gender;
     private Button TI_btn_delete;
     private ImageView TI_icon_back;
     private Tenant tenant;
@@ -82,12 +82,7 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
 //
 //        setText(tenant, account);
     }
-    private void setSpinnerGender(){
-        String[] values = {"men", "women",};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        TI_spinner_gender.setAdapter(adapter);
-    }
+
     private void setBtnDeleteOnclick(Tenant tenant){
         TI_btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,9 +131,7 @@ public class Tenant_Infor_Activity extends AppCompatActivity {
         TI_edt_phone.setText(tenant.getPhone());
         TI_edt_address.setText(tenant.getAddress());
         TI_edt_age.setText(tenant.getAge());
-        if (tenant.getGender().equals("men")){
-            TI_spinner_gender.setSelection(0);
-        } else TI_spinner_gender.setSelection(1);
+        TI_spinner_gender.setText(tenant.getGender());
     }
     private void setIconBack(){
         TI_icon_back.setOnClickListener(new View.OnClickListener() {
