@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/box_room"
+    android:orientation="horizontal"
+    android:layout_marginBottom="20dp">
+
+    <RelativeLayout
+        android:id="@+id/LC_rl_1"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LC_tv_Tenant_1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Tenant:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LC_tv_roomCode_1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LC_tv_Tenant_1"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Room:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LC_tv_rentDay_1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LC_tv_roomCode_1"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Rent day"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LC_tv_Status_1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LC_tv_rentDay_1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="21dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Status:"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/LC_rl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LC_tv_Tenant_2"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Name"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LC_tv_roomCode_2"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LC_tv_Tenant_2"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="code"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LC_tv_rentDay_2"
+            android:layout_width="135dp"
+            android:layout_height="64dp"
+            android:layout_below="@+id/LC_tv_roomCode_2"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinsregular"
+            android:text="day"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/LC_tv_status_2"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LC_tv_rentDay_2"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="status"
+            android:textColor="@color/red_dark"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/LC_btn_approve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_approve"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="approve"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/LC_btn_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_remove_contract"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Remove"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/LC_btn_deleteRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_remove_contract"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Remove"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

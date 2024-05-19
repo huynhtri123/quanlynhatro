@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.ContractDetailActivity"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/CD_ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/PI_icon_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vector"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/PI_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="CONTRACT'S DETAIL"
+                android:textSize="22sp"
+                android:layout_marginLeft="40dp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/PI_ll_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CD_ll_1"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/background"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tenant name: "
+                android:textColor="@color/xanh1"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppinsregular"/>
+
+            <EditText
+                android:id="@+id/PI_edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Name"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinssemibold"
+                android:inputType="none"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tenant phone: "
+                android:layout_marginTop="10dp"
+                android:textColor="@color/xanh1"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppinsregular"/>
+
+            <EditText
+                android:id="@+id/PI_edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Phone"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinssemibold"
+                android:inputType="none"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tenant address: "
+                android:layout_marginTop="10dp"
+                android:textColor="@color/xanh1"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppinsregular"/>
+
+            <EditText
+                android:id="@+id/PI_edt_address"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Address"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinssemibold"
+                android:inputType="none"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room info: "
+                android:layout_marginTop="10dp"
+                android:textColor="@color/xanh1"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppinsregular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/PI_edt_roomcode"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:hint="Room Code"
+                    android:textColor="@color/black"
+                    android:paddingLeft="20dp"
+                    android:background="@drawable/button_shape2"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <EditText
+                    android:id="@+id/PI_edt_roomprice"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:hint="Room Price"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:paddingLeft="20dp"
+                    android:background="@drawable/button_shape2"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Created day: "
+                android:layout_marginTop="10dp"
+                android:textColor="@color/xanh1"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppinsregular"/>
+
+            <EditText
+                android:id="@+id/PI_edt_room_createdday"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Created day"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinssemibold"
+                android:inputType="none"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contract status: "
+                android:layout_marginTop="10dp"
+                android:textColor="@color/xanh1"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppinsregular"/>
+
+            <EditText
+                android:id="@+id/PI_edt_roomstatus"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Status"
+                android:textColor="@color/red_dark"
+                android:paddingLeft="20dp"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinssemibold"
+                android:inputType="none"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/PI_ll_2"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/PI_btn_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/PI_ll_2"
+                android:text="CANCEL"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/nau_cam"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+                />
+
+            <Button
+                android:id="@+id/PI_btn_2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/PI_ll_2"
+                android:text="TERMINATE"
+                android:background="@drawable/button_shape2"
+                android:backgroundTint="@color/red_dark"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

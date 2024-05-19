@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.HomeActivity"
+    android:orientation="vertical"
+    android:background="@color/background_home">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:background="@drawable/gambar1">
+    </LinearLayout>
+
+    <!--    frame 1: hello, username, image-->
+    <LinearLayout
+        android:id="@+id/H_ll_frame1"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:background="@drawable/welcome_frame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:id="@+id/H_ll_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            
+            <TextView
+                android:id="@+id/H_tv_hello"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="Hello!"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:paddingLeft="50dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/H_tv_username"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Huynh Tri"
+                android:textSize="24sp"
+                android:fontFamily="@font/poppinsbold"
+                android:paddingLeft="50dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/H_ll_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/btn_book"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/user"
+                android:id="@+id/H_image_1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--    frame 2: 2 button-->
+    <LinearLayout
+        android:id="@+id/H_ll_frame2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/H_ll_frame1"
+        android:orientation="horizontal"
+        android:layout_marginLeft="140dp"
+        android:padding="10dp">
+
+<!--        chuc nang edit info: H_btn_edit_ifo-->
+        <Button
+            android:id="@+id/H_btn_1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_logout_home"
+            android:text="btn1"
+            android:fontFamily="@font/poppinsregular"
+            android:gravity="center"/>
+
+        <!--chuc nang logout: H_btn_logout-->
+        <Button
+            android:id="@+id/H_btn_logout"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btn_logout_home"
+            android:text="Logout"
+            android:fontFamily="@font/poppinsregular"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+<!--    frame 3: box chuc nang-->
+    <RelativeLayout
+        android:id="@+id/H_rl_frame3"
+        android:layout_width="350dp"
+        android:layout_height="410dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/H_ll_frame2"
+        android:background="@drawable/box_home"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:id="@+id/H_ll_frame1_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/H_ll_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+<!--                    chuc nang 1 click vo day: H_img_func1-->
+                    <ImageView
+                        android:id="@+id/H_img_func1_personal_info"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_person"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal-Info"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/H_ll_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_6"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 2 click vo day: H_img_func2-->
+                    <ImageView
+                        android:id="@+id/H_img_func2_listRooms"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_room_management"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Rooms"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/H_ll_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_8"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 3 click vo day: H_img_func3-->
+                    <ImageView
+                        android:id="@+id/H_img_func3_tenant_management"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_personal_info"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tenants-Ma"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--frame2-->
+        <LinearLayout
+            android:id="@+id/H_ll_frame2_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/H_ll_frame1_func"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/H_ll_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_10"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 4 click vo day: H_img_func4-->
+                    <ImageView
+                        android:id="@+id/H_img_func4_invoice"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_invoice"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Invoice"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/H_ll_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_12"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 5 click vo day: H_img_func5-->
+                    <ImageView
+                        android:id="@+id/H_img_func5_statistic"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_statistic"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Statistic"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/H_ll_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_14"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 6 click vo day: H_img_func6-->
+                    <ImageView
+                        android:id="@+id/H_img_func6_contract"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/in_contract"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contract"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--frame3-->
+        <LinearLayout
+            android:id="@+id/H_ll_frame3_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/H_ll_frame2_func"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/H_ll_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_16"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 7 click vo day: H_img_func7-->
+                    <ImageView
+                        android:id="@+id/H_img_func7_expense_management"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_quanlythuchi"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expense-Ma"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/H_ll_17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_18"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 8 click vo day: H_img_func8-->
+                    <ImageView
+                        android:id="@+id/H_img_func8_rent_room"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_rent_room"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rent-Room"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/H_ll_19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/H_ll_20"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/box_func_home"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <!--chuc nang 9 click vo day: H_img_func9-->
+                    <ImageView
+                        android:id="@+id/H_img_func9_reminders"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/ic_thongbao"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reminders"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
