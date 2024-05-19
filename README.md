@@ -32,5 +32,6 @@ QuanLyNhaTro là một hệ thống quản lý nhà trọ giúp chủ nhà trọ
 
 ## Hướng dẫn cài đặt
 git clone [https://github.com/huynhtri123/quanlynhatro.git](https://github.com/huynhtri123/quanlynhatro.git)
+checkout sang nhánh develop để dùng
 
 
