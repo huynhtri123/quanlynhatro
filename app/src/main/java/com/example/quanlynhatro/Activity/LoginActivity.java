@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -26,12 +27,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText L_edt_email;
     private EditText L_edt_password;
     private Button L_btn_1;
+    private TextView L_tv_hide_show;
     private void anhxa(){
         L_img_1 = findViewById(R.id.L_img_1);
         txt_register = findViewById(R.id.txt_register);
         L_edt_email = findViewById(R.id.L_edt_email);
         L_edt_password = findViewById(R.id.L_edt_password);
         L_btn_1 = findViewById(R.id.L_btn_1);
+        L_tv_hide_show = findViewById(R.id.L_tv_hide_show);
     }
 
     @Override
@@ -43,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         anhxa();
         btn_BackListener();
         txt_RegisterListener();
+        tv_hide_show();
 
         L_btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +133,23 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 // Đóng hoạt động hiện tại
                 finish();
+            }
+        });
+    }
+    private void tv_hide_show(){
+        L_tv_hide_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Kiểm tra nếu hiện tại đang ở chế độ mật khẩu
+                if (L_edt_password.getTransformationMethod() instanceof android.text.method.PasswordTransformationMethod) {
+                    // Chuyển sang chế độ văn bản rõ ràng
+                    L_tv_hide_show.setText("Hide password");
+                    L_edt_password.setTransformationMethod(null);
+                } else {
+                    // Chuyển lại sang chế độ mật khẩu
+                    L_tv_hide_show.setText("Show password");
+                    L_edt_password.setTransformationMethod(new android.text.method.PasswordTransformationMethod());
+                }
             }
         });
     }
