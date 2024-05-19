@@ -116,10 +116,10 @@ public class Invoice{
     // Hàm tính tổng hóa đơn tiền phụ phí
     public double calculateTotalBill() {
 //        double roomPrice = Double.parseDouble(room.getRoomPrice());
-        double electricity = Double.parseDouble(electricityCost);
-        double water = Double.parseDouble(waterCost);
-        double parking = Double.parseDouble(parkingCost);
-        double wifi = Double.parseDouble(wifiCost);
+        double electricity = Double.parseDouble(electricityCost.trim());
+        double water = Double.parseDouble(waterCost.trim());
+        double parking = Double.parseDouble(parkingCost.trim());
+        double wifi = Double.parseDouble(wifiCost.trim());
 
 //        return roomPrice + electricity + water + parking + wifi;
         return electricity + water + parking + wifi;

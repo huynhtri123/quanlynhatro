@@ -30,6 +30,7 @@ public class CreateRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_room);
+        getSupportActionBar().hide();
         anhxa();
         setIconBack();
 
