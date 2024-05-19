@@ -1,6 +1,10 @@
 # QuanLyNhaTro
 
 Dự án QuanLyNhaTro giúp quản lý nhà trọ một cách hiệu quả, bao gồm quản lý thông tin phòng trọ, hợp đồng thuê, và thu tiền.
+Thành viên: 
+Huỳnh Minh Trí 21110329
+Đặng Huy Diệu 21110818
+
 
 ## Giới thiệu
 
