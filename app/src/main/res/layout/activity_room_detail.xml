@@ -122,7 +122,8 @@
                 android:hint="ROOM-PRICE"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:inputType="number"/>
 
         </LinearLayout>
 

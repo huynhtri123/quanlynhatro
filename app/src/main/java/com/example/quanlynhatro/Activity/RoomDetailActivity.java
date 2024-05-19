@@ -117,10 +117,33 @@ public class RoomDetailActivity extends AppCompatActivity {
         });
     }
     private void saveRoomFromDatabase(Room room,View v){
-        room.setRoomCode(RD_edt_roomcode.getText().toString());
-        room.setRoomPrice(RD_edt_roomprice.getText().toString());
-        room.setRoomSize(RD_ed_roomSize.getText().toString());
-        AppDatabase.getInstance(RoomDetailActivity.this).roomDAO().updateRoom(room);
-        Toast.makeText(v.getContext(), "SAVED!", Toast.LENGTH_SHORT).show();
+        if (validateInputs()){
+            room.setRoomCode(RD_edt_roomcode.getText().toString());
+            room.setRoomPrice(RD_edt_roomprice.getText().toString());
+            room.setRoomSize(RD_ed_roomSize.getText().toString());
+            AppDatabase.getInstance(RoomDetailActivity.this).roomDAO().updateRoom(room);
+            Toast.makeText(v.getContext(), "SAVED!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(v.getContext(), "Invalid input!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private boolean validateInputs() {
+        if (RD_edt_roomcode.getText().toString().trim().isEmpty()) {
+            RD_edt_roomcode.setError("Không được để trống trường này");
+            RD_edt_roomcode.requestFocus();
+            return false;
+        }
+        if (RD_edt_roomprice.getText().toString().trim().isEmpty()) {
+            RD_edt_roomprice.setError("Không được để trống trường này");
+            RD_edt_roomprice.requestFocus();
+            return false;
+        }
+        if (RD_ed_roomSize.getText().toString().trim().isEmpty()) {
+            RD_ed_roomSize.setError("Không được để trống trường này");
+            RD_ed_roomSize.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 }

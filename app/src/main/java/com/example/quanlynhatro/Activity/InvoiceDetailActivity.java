@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -145,24 +147,55 @@ public class InvoiceDetailActivity extends AppCompatActivity {
         ID_btn_make_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String electric_cost = String.valueOf(ID_ed_electricity_cost.getText());
-                String water_cost = String.valueOf(ID_ed_water_cost.getText());
-                String parking_cost = String.valueOf(ID_ed_parking_cost.getText());
-                String wifi_cost = String.valueOf(ID_ed_wifi_cost.getText());
+                if (validateInputs()){
+                    String electric_cost = String.valueOf(ID_ed_electricity_cost.getText());
+                    String water_cost = String.valueOf(ID_ed_water_cost.getText());
+                    String parking_cost = String.valueOf(ID_ed_parking_cost.getText());
+                    String wifi_cost = String.valueOf(ID_ed_wifi_cost.getText());
 
-                invoice.setElectricityCost(electric_cost);
-                invoice.setWaterCost(water_cost);
-                invoice.setParkingCost(parking_cost);
-                invoice.setWifiCost(wifi_cost);
-                invoice.setStatus(InvoiceStatus.UN_PAID.name());
-                AppDatabase.getInstance(InvoiceDetailActivity.this).invoiceDAO().updateInvoice(invoice);
+                    invoice.setElectricityCost(electric_cost);
+                    invoice.setWaterCost(water_cost);
+                    invoice.setParkingCost(parking_cost);
+                    invoice.setWifiCost(wifi_cost);
+                    invoice.setStatus(InvoiceStatus.UN_PAID.name());
+                    AppDatabase.getInstance(InvoiceDetailActivity.this).invoiceDAO().updateInvoice(invoice);
 
-                double new_totalPrice = calculatorTotalPrice(room, invoice);
-                setText(tenant, invoice, room, new_totalPrice);
-                Toast.makeText(InvoiceDetailActivity.this, "Updated invoice!", Toast.LENGTH_SHORT).show();
+                    double new_totalPrice = calculatorTotalPrice(room, invoice);
+                    setText(tenant, invoice, room, new_totalPrice);
+                    Toast.makeText(InvoiceDetailActivity.this, "Updated invoice!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(InvoiceDetailActivity.this, "Invalid input!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
+
+    private boolean validateInputs() {
+        if (ID_ed_electricity_cost.getText().toString().trim().isEmpty()) {
+            ID_ed_electricity_cost.setError("Không được để trống trường này");
+            ID_ed_electricity_cost.requestFocus();
+            return false;
+        }
+        if (ID_ed_water_cost.getText().toString().trim().isEmpty()) {
+            ID_ed_water_cost.setError("Không được để trống trường này");
+            ID_ed_water_cost.requestFocus();
+            return false;
+        }
+        if (ID_ed_parking_cost.getText().toString().trim().isEmpty()) {
+            ID_ed_parking_cost.setError("Không được để trống trường này");
+            ID_ed_parking_cost.requestFocus();
+            return false;
+        }
+        if (ID_ed_wifi_cost.getText().toString().trim().isEmpty()) {
+            ID_ed_wifi_cost.setError("Không được để trống trường này");
+            ID_ed_wifi_cost.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
     private void setText(Tenant tenant, Invoice invoice, Room room, double totalPrice){
         ID_ed_name.setText(tenant.getName());
         PI_edt_roomcode.setText(room.getRoomCode());
